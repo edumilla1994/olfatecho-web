@@ -62,7 +62,7 @@ img{max-width:100%;display:block}
 .card:hover img{transform:scale(1.05)}
 .card-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
 .card-genre{font-size:var(--fs-small);font-weight:700;color:var(--accent)}
-.card h3{font-family:var(--serif);font-size:var(--fs-lead);line-height:1.25;margin:0;letter-spacing:-.01em}
+.card h3{font-family:var(--serif);font-size:var(--fs-lead);line-height:1.25;margin:0;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card .meta{font-size:var(--fs-small);color:var(--muted);margin-top:auto}
 .news-list{display:grid;grid-template-columns:1.1fr .9fr;gap:48px}
 .news-item{display:block;padding:18px 16px;margin:0 -16px 6px;border-radius:14px;transition:background .2s}

@@ -333,7 +333,20 @@ def pie(root):
 """.format(root=root, email=EMAIL, anio=datetime.now().year)
 
 
+def titular_edicion(ed):
+    """Titular de la noticia principal de la edición (para las tarjetas)."""
+    if ed.get("stories"):
+        t = ed["stories"][0]["title"]
+        src = ed["stories"][0].get("source") or ""
+        if src:
+            t = re.sub(r"\s*[-–—]\s*" + re.escape(src) + r"\s*$", "",
+                       t, flags=re.I).strip()
+        return t or ed["titulo_web"]
+    return ed["titulo_web"] or "Olfatecho Noticias"
+
+
 def tarjeta_edicion(ed, root, i=0):
+    tit = titular_edicion(ed)
     return """<a class="card reveal" href="{root}edicion/{slug}.html" style="--d:{d}s">
 <div class="card-media"><img src="{img}" alt="{alt}" loading="lazy"></div>
 <div class="card-body">
@@ -342,11 +355,9 @@ def tarjeta_edicion(ed, root, i=0):
   <span class="meta">{fecha} · {n} noticias</span>
 </div></a>""".format(
         root=root, slug=ed["slug"], img=esc(img_url(ed, root)),
-        alt=esc(ed["titulo_web"] or ed["edicion"]),
-        edicion=esc(ed["edicion"].capitalize()),
-        titulo=esc(ed["titulo_web"] or "Olfatecho Noticias"),
-        fecha=esc(fecha_corta(ed["dt"])), n=len(ed["stories"]),
-        d=(i % 3) * 0.08)
+        alt=esc(tit), edicion=esc(ed["edicion"].capitalize()),
+        titulo=esc(tit), fecha=esc(fecha_corta(ed["dt"])),
+        n=len(ed["stories"]), d=(i % 3) * 0.08)
 
 
 def item_noticia(ed, s, root, i=0):
