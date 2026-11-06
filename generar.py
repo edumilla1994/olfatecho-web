@@ -28,7 +28,7 @@ from datetime import datetime
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FUENTE = os.path.normpath(os.path.join(
     AQUI, "..", "noticiasdiarias", "storage", "noticias_diarias"))
-SALIDA = os.path.join(AQUI, "site")
+SALIDA = os.path.join(AQUI, "docs")
 BASE_URL = os.getenv("OLFATECHO_BASE",
                      "https://edumilla1994.github.io/olfatecho-web").rstrip("/")
 EMAIL = "edumilla1994@gmail.com"
