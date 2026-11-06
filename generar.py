@@ -265,6 +265,7 @@ def cabecera(root):
   <a href="{root}index.html">Inicio</a>
   <a href="{root}index.html#ediciones">Ediciones</a>
   <a href="{root}nosotros.html">Nosotros</a>
+  <a href="{root}apoyanos.html">Apóyanos</a>
   <a href="{root}privacidad.html">Privacidad</a>
 </nav>
 </div></header>
@@ -272,9 +273,12 @@ def cabecera(root):
 
 
 def pie(root):
-    cookie = """<div class="cookie" id="cookie-banner" hidden><div class="wrap cookie-inner">
-<p>Usamos cookies propias y de terceros (Google AdSense) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar. <a href="{root}privacidad.html">Más información</a>.</p>
-<div class="actions"><button class="no" id="cookie-no">Rechazar</button><button class="ok" id="cookie-ok">Aceptar</button></div>
+    cookie = """<div class="cookie-wall" id="cookie-banner" hidden>
+<div class="cookie-card">
+<h2>Antes de seguir</h2>
+<p>Usamos cookies propias y de terceros (Google AdSense) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar; si rechazas, no cargamos publicidad.</p>
+<div class="cookie-actions"><button class="no" id="cookie-no">Rechazar</button><button class="ok" id="cookie-ok">Aceptar</button></div>
+<p class="cookie-note"><a href="{root}privacidad.html">Política de privacidad</a></p>
 </div></div>""".format(root=root)
     return cookie + """<footer class="site-footer"><div class="wrap">
 <div class="footer-grid">
@@ -287,6 +291,7 @@ def pie(root):
     <p><a href="{root}index.html">Inicio</a></p>
     <p><a href="{root}index.html#ediciones">Ediciones</a></p>
     <p><a href="{root}nosotros.html">Nosotros</a></p>
+    <p><a href="{root}apoyanos.html">Apóyanos</a></p>
     <p><a href="{root}privacidad.html">Privacidad</a></p>
     <p><a href="#" data-cookie-settings>Cookies</a></p>
   </div>
@@ -371,6 +376,7 @@ def generar_inicio(eds):
 <h3>La noticia, completa</h3>
 <p>Cada edición dura menos de dos minutos. En la web tienes el resumen de cada historia y el enlace directo al medio original para leerla completa.</p>
 <a class="btn" href="{root}nosotros.html">Conoce Olfatecho →</a>
+<p style="margin:14px 0 0"><a href="{root}apoyanos.html" style="color:#f6efe3;text-decoration:underline">Apóyanos con un Yape o BIM →</a></p>
 </div>""".format(root=root)
 
     jsonld = json.dumps({
@@ -536,6 +542,16 @@ def nosotros():
 <p>¿Tienes un dato, una corrección o una sugerencia? Escríbenos a <a href="mailto:%s">%s</a>.</p>""" % (EMAIL, EMAIL)
 
 
+def apoyanos():
+    return """<h1>Apóyanos</h1>
+<p>Olfatecho es gratis y se mantiene con publicidad. Si te sirve y quieres apoyar, puedes hacerlo con un Yape o un BIM. ¡Gracias!</p>
+<div class="qr-grid">
+  <div class="qr-card"><img src="assets/yape.jpg" alt="Código QR de Yape"><h2>Yape</h2><p>Escanea el QR desde tu app Yape.</p></div>
+  <div class="qr-card"><img src="assets/bim.jpg" alt="Código QR de BIM"><h2>BIM</h2><p>Escanea el QR desde tu app BIM.</p></div>
+</div>
+<p class="qr-note">Cada aporte ayuda a mantener el noticiero y la web. Gracias por el apoyo.</p>"""
+
+
 def privacidad():
     return """<h1>Política de privacidad</h1>
 <p>Última actualización: %s.</p>
@@ -554,7 +570,8 @@ def privacidad():
 
 
 def sitemap(eds):
-    urls = [BASE_URL + "/", BASE_URL + "/nosotros.html", BASE_URL + "/privacidad.html"]
+    urls = [BASE_URL + "/", BASE_URL + "/nosotros.html",
+            BASE_URL + "/apoyanos.html", BASE_URL + "/privacidad.html"]
     for e in eds:
         urls.append("%s/edicion/%s.html" % (BASE_URL, e["slug"]))
         for s in e["stories"]:
@@ -604,7 +621,8 @@ def main():
                     os.path.join(SALIDA, "assets", "style.css"))
     shutil.copyfile(os.path.join(AQUI, "assets", "app.js"),
                     os.path.join(SALIDA, "assets", "app.js"))
-    for extra in ("logo.png", "favicon.png", "logo-512.png", "og-default.jpg"):
+    for extra in ("logo.png", "favicon.png", "logo-512.png", "og-default.jpg",
+                  "yape.jpg", "bim.jpg"):
         src = os.path.join(AQUI, "assets", extra)
         if os.path.isfile(src):
             shutil.copyfile(src, os.path.join(SALIDA, "assets", extra))
@@ -626,6 +644,9 @@ def main():
 
     open(os.path.join(SALIDA, "nosotros.html"), "w", encoding="utf-8").write(
         generar_pagina("Nosotros", "Qué es Olfatecho y cómo trabaja.", "nosotros", nosotros()))
+    open(os.path.join(SALIDA, "apoyanos.html"), "w", encoding="utf-8").write(
+        generar_pagina("Apóyanos", "Apoya a Olfatecho con Yape o BIM.",
+                       "apoyanos", apoyanos()))
     open(os.path.join(SALIDA, "privacidad.html"), "w", encoding="utf-8").write(
         generar_pagina("Privacidad", "Política de privacidad de Olfatecho Noticias.",
                        "privacidad", privacidad()))

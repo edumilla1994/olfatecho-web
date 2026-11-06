@@ -74,29 +74,37 @@
 
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved) apply(saved);
-  else if (banner) {
-    banner.hidden = false;
-    var hero = document.querySelector(".hero");
-    if (hero && hero.parentNode) hero.parentNode.insertBefore(banner, hero.nextSibling);
+
+  function mostrarMuro() {
+    if (banner) {
+      banner.hidden = false;
+      document.body.classList.add("cookie-lock");
+    }
   }
+  function cerrarMuro() {
+    if (banner) banner.hidden = true;
+    document.body.classList.remove("cookie-lock");
+  }
+
+  if (saved) apply(saved);
+  else mostrarMuro();
 
   if (banner) {
     var ok = document.getElementById("cookie-ok");
     var no = document.getElementById("cookie-no");
     if (ok) ok.addEventListener("click", function () {
       try { localStorage.setItem(KEY, "ads"); } catch (e) {}
-      banner.hidden = true;
+      cerrarMuro();
       apply("ads");
     });
     if (no) no.addEventListener("click", function () {
       try { localStorage.setItem(KEY, "no"); } catch (e) {}
-      banner.hidden = true;
+      cerrarMuro();
     });
   }
 
   window.olfatechoCookies = function () {
-    if (banner) banner.hidden = false;
+    mostrarMuro();
   };
   document.querySelectorAll("[data-cookie-settings]").forEach(function (a) {
     a.addEventListener("click", function (e) {
