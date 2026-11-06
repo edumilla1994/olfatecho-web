@@ -146,7 +146,7 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{img}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{root}assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="{root}assets/style.css">
 {jsonld}
 </head>
@@ -162,7 +162,7 @@ def cabecera(root):
 </div></div>
 <header class="site-header"><div class="wrap">
 <a class="logo" href="{root}index.html">
-  <span class="logo-mark">🐾</span>
+  <img class="logo-mark" src="{root}assets/logo.png" alt="Olfatecho">
   <span class="logo-text">OLFATECHO<small>NOTICIAS DEL PERÚ</small></span>
 </a>
 <nav class="nav">
@@ -469,13 +469,6 @@ def rss(eds):
 %s</channel></rss>""" % (BASE_URL, items)
 
 
-def favicon():
-    return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<circle cx="32" cy="32" r="32" fill="#b8431f"/>
-<text x="32" y="42" font-size="30" text-anchor="middle" fill="#fff" font-family="Georgia,serif">O</text>
-</svg>"""
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="")
@@ -493,7 +486,10 @@ def main():
 
     shutil.copyfile(os.path.join(AQUI, "assets", "style.css"),
                     os.path.join(SALIDA, "assets", "style.css"))
-    open(os.path.join(SALIDA, "assets", "favicon.svg"), "w", encoding="utf-8").write(favicon())
+    for extra in ("logo.png", "favicon.png", "logo-512.png", "og-default.jpg"):
+        src = os.path.join(AQUI, "assets", extra)
+        if os.path.isfile(src):
+            shutil.copyfile(src, os.path.join(SALIDA, "assets", extra))
 
     open(os.path.join(SALIDA, "index.html"), "w", encoding="utf-8").write(generar_inicio(eds))
     for ed in eds:
