@@ -35,7 +35,7 @@ img{max-width:100%;display:block}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
 .hero-copy{max-width:620px}
 .hero-kicker{font-size:var(--fs-small);color:var(--terra);font-weight:700;margin:0 0 12px}
-.hero h1{font-family:var(--serif);font-size:var(--fs-display);line-height:1.02;letter-spacing:-.025em;margin:0 0 18px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,4.4vw,54px);line-height:1.1;letter-spacing:-.02em;margin:0 0 18px}
 .hero-lead{font-size:var(--fs-lead);line-height:1.55;color:var(--ink);margin:0 0 22px;max-width:54ch}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .hero-edition{font-size:var(--fs-small);color:var(--muted)}

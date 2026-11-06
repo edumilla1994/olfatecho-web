@@ -158,7 +158,27 @@ def cargar_ediciones():
             })
         img_src = ""
         fotos_dir = os.path.join(carpeta, "fotos")
-        if os.path.isdir(fotos_dir):
+        # 1) la foto de la PRIMERA historia (la del titular del hero)
+        mat = os.path.join(carpeta, "material_manifest.json")
+        if os.path.isfile(mat) and os.path.isdir(fotos_dir):
+            try:
+                manif = json.load(open(mat, encoding="utf-8"))
+                for it in manif.get("items") or []:
+                    if str(it.get("term")) != "0" or not it.get("selected", True):
+                        continue
+                    base = os.path.basename(it.get("path") or "")
+                    stem = base.split("_540x960")[0].replace("webimg_", "")
+                    for ext in (".jpg", ".jpeg", ".png", ".webp"):
+                        p = os.path.join(fotos_dir, stem + ext)
+                        if os.path.isfile(p):
+                            img_src = p
+                            break
+                    if img_src:
+                        break
+            except Exception:
+                pass
+        # 2) respaldo: la foto más grande de la edición
+        if not img_src and os.path.isdir(fotos_dir):
             imgs = [f for f in os.listdir(fotos_dir)
                     if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))]
             pref = [f for f in imgs if f.lower().startswith("story")]
@@ -349,9 +369,15 @@ def generar_inicio(eds):
         doc += cabecera(root) + '<main class="wrap"><div class="empty">Todavía no hay ediciones publicadas.</div></main>' + pie(root)
         return doc
     portada = eds[0]
+    lead_story = portada["stories"][0] if portada["stories"] else None
+    titular = (lead_story["title"] if lead_story else
+               (portada["titulo_web"] or "Olfatecho Noticias"))
+    if lead_story and lead_story.get("source"):
+        titular = re.sub(r"\s*[-–—]\s*" + re.escape(lead_story["source"]) + r"\s*$",
+                         "", titular, flags=re.I).strip()
     hero = """<section class="hero"><div class="wrap"><div class="hero-grid">
 <div class="hero-copy">
-  <h1>El día en 2 minutos.</h1>
+  <h1>{titular}</h1>
   <p class="hero-lead">{lead}</p>
   <div class="hero-actions">
     <a class="btn" href="{root}edicion/{slug}.html">Ver la edición completa →</a>
@@ -364,7 +390,7 @@ def generar_inicio(eds):
 </div>
 </div></div></section>""".format(
         root=root, slug=portada["slug"], img=esc(img_url(portada, root)),
-        alt=esc(portada["titulo_web"]),
+        alt=esc(portada["titulo_web"]), titular=esc(titular),
         lead=esc(portada["stories"][0]["contexto"] if portada["stories"] else ""),
         fecha=esc(fecha_corta(portada["dt"])),
         edicion=esc(portada["edicion"].capitalize()))
