@@ -21,7 +21,7 @@ import os
 import re
 import shutil
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timedelta
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FUENTE = os.path.normpath(os.path.join(
@@ -32,6 +32,7 @@ BASE_URL = os.getenv("OLFATECHO_BASE",
 DOMINIO_FILE = os.path.join(AQUI, "dominio.txt")
 EMAIL = "edumilla1994@gmail.com"
 SITE_NAME = "Olfatecho Noticias"
+DIAS_VENTANA = int(os.getenv("OLFATECHO_DIAS", "2"))
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
@@ -183,6 +184,9 @@ def cargar_ediciones():
             "stories": stories,
         })
     eds.sort(key=lambda e: e["dt"], reverse=True)
+    # solo ediciones recientes: el archivo viejo no debe inundar la portada
+    limite = datetime.now() - timedelta(days=DIAS_VENTANA)
+    eds = [e for e in eds if e["dt"] >= limite]
     return eds
 
 
