@@ -143,6 +143,12 @@ body.cookie-lock{overflow:hidden}
 .qr-card h2{font-family:var(--serif);font-size:26px;margin:0 0 6px}
 .qr-card p{font-size:14px;color:var(--muted);margin:0}
 .qr-note{font-size:14px;color:var(--muted)}
+.support-intro{display:flex;align-items:center;gap:16px;margin:8px 0 20px}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:24px;letter-spacing:.02em;flex:0 0 64px}
+.support-name{font-weight:700;font-size:18px;margin:0;color:var(--ink)}
+.support-role{font-size:13px;color:var(--muted);margin:2px 0 0}
+.qr-name{font-weight:700;color:var(--ink);font-size:15px;margin:0 0 4px}
+.support-sign{font-family:var(--serif);font-size:18px;margin-top:12px}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
 .reveal.is-visible{opacity:1;transform:none}
 @keyframes heroIn{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1.01)}}

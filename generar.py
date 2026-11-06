@@ -531,6 +531,7 @@ def generar_pagina(titulo, desc, slug, contenido):
 def nosotros():
     return """<h1>¿Qué es Olfatecho?</h1>
 <p>Olfatecho es un noticiero peruano que resume las noticias más importantes del día en ediciones de menos de dos minutos. Cada historia tiene su espacio en esta web con un resumen claro y el enlace directo al medio que la publicó.</p>
+<p>Lo hace <strong>Eduardo Milla</strong>, con la idea de que enterarse de las noticias no tiene que tomar media hora.</p>
 <h2>Nuestro compromiso</h2>
 <p>No inventamos ni copiamos artículos: contamos lo esencial y te llevamos a la fuente original para que puedas leer la nota completa y sacar tus conclusiones.</p>
 <h2>¿Cómo funciona?</h2>
@@ -543,13 +544,19 @@ def nosotros():
 
 
 def apoyanos():
-    return """<h1>Apóyanos</h1>
-<p>Olfatecho es gratis y se mantiene con publicidad. Si te sirve y quieres apoyar, puedes hacerlo con un Yape o un BIM. ¡Gracias!</p>
-<div class="qr-grid">
-  <div class="qr-card"><img src="assets/yape.jpg" alt="Código QR de Yape"><h2>Yape</h2><p>Escanea el QR desde tu app Yape.</p></div>
-  <div class="qr-card"><img src="assets/bim.jpg" alt="Código QR de BIM"><h2>BIM</h2><p>Escanea el QR desde tu app BIM.</p></div>
+    return """<div class="support-intro">
+  <div class="avatar">EM</div>
+  <div><p class="support-name">Eduardo Milla</p><p class="support-role">Editor de Olfatecho</p></div>
 </div>
-<p class="qr-note">Cada aporte ayuda a mantener el noticiero y la web. Gracias por el apoyo.</p>"""
+<h1>Apóyanos</h1>
+<p>Olfatecho es un noticiero independiente que hago yo, todos los días, con feeds, café y muchas ganas. No hay una redacción enorme detrás ni un presupuesto que lo sostenga: solo este proyecto y tú del otro lado.</p>
+<p>Si te sirve para enterarte rápido de lo que pasa en el Perú y el mundo, puedes invitarme un café con Yape o BIM. Cada aporte ayuda a pagar el internet, la luz y las horas de edición para que las ediciones sigan saliendo.</p>
+<div class="qr-grid">
+  <div class="qr-card"><img src="assets/yape.jpg" alt="Código QR de Yape de Eduardo Milla"><h2>Yape</h2><p class="qr-name">Eduardo Milla</p><p>Escanea el QR desde tu app Yape.</p></div>
+  <div class="qr-card"><img src="assets/bim.jpg" alt="Código QR de BIM de Eduardo Milla"><h2>BIM</h2><p class="qr-name">Eduardo Milla</p><p>Escanea el QR desde tu app BIM.</p></div>
+</div>
+<p class="qr-note">Gracias por el apoyo. Si no puedes aportar, compartir la web o un video también ayuda un montón.</p>
+<p class="support-sign">— Eduardo Milla</p>"""
 
 
 def privacidad():
@@ -645,7 +652,7 @@ def main():
     open(os.path.join(SALIDA, "nosotros.html"), "w", encoding="utf-8").write(
         generar_pagina("Nosotros", "Qué es Olfatecho y cómo trabaja.", "nosotros", nosotros()))
     open(os.path.join(SALIDA, "apoyanos.html"), "w", encoding="utf-8").write(
-        generar_pagina("Apóyanos", "Apoya a Olfatecho con Yape o BIM.",
+        generar_pagina("Apóyanos", "Apoya a Olfatecho con Yape o BIM. Eduardo Milla, editor.",
                        "apoyanos", apoyanos()))
     open(os.path.join(SALIDA, "privacidad.html"), "w", encoding="utf-8").write(
         generar_pagina("Privacidad", "Política de privacidad de Olfatecho Noticias.",
