@@ -256,7 +256,7 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 
 def cabecera(root):
     return """<div class="topbar"><div class="wrap">
-<span>Perú y el mundo, contado rápido y claro</span>
+<span>Perú y el mundo, en 2 minutos</span>
 <span>{fecha}</span>
 </div></div>
 <header class="site-header"><div class="wrap">

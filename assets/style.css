@@ -174,7 +174,8 @@ body.cookie-lock{overflow:hidden}
   .section{padding:44px 0}
   .logo-mark{width:46px;height:46px;flex-basis:46px}
   .logo-text{font-size:21px}
-  .topbar .wrap{height:34px}
+  .topbar .wrap{height:auto;padding-top:8px;padding-bottom:8px;flex-direction:column;align-items:flex-start;gap:2px}
+  .topbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
   .article{padding-top:30px}
   .qr-grid{grid-template-columns:1fr}
 }
