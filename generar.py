@@ -123,11 +123,16 @@ def cargar_ediciones():
         carpeta = os.path.join(FUENTE, d)
         nj = os.path.join(carpeta, "noticias.json")
         yj = os.path.join(carpeta, "subir_youtube.json")
-        if not (os.path.isfile(nj) and os.path.isfile(yj)):
+        fin = os.path.join(carpeta, "final-es.mp4")
+        if not os.path.isfile(nj):
+            continue
+        # incluir tambien las ediciones con video listo aunque YouTube aun
+        # no las haya subido: la web no debe quedarse atras
+        if not os.path.isfile(yj) and not os.path.isfile(fin):
             continue
         try:
             j = json.load(open(nj, encoding="utf-8"))
-            yt = json.load(open(yj, encoding="utf-8"))
+            yt = json.load(open(yj, encoding="utf-8")) if os.path.isfile(yj) else {}
         except Exception:
             continue
         noticias = [n for n in (j.get("noticias") or []) if n.get("title")]
@@ -143,6 +148,9 @@ def cargar_ediciones():
         ed_txt = (j.get("edicion") or "").strip() or "edición"
         slug = "%s-%s" % (dt.strftime("%Y-%m-%d"), slugify(ed_txt))
         vid = video_id(yt.get("url") or "")
+        titulo_yt = (yt.get("titulo") or "").strip()
+        if not titulo_yt:
+            titulo_yt = "Olfatecho Noticias — %s (%s)" % (fecha_larga(dt), ed_txt)
         stories = []
         for i, n in enumerate(noticias, 1):
             stories.append({
@@ -198,8 +206,8 @@ def cargar_ediciones():
             "num": int(j.get("edicion_num") or 0),
             "slug": slug, "video": vid,
             "url": (yt.get("url") or "").strip(),
-            "titulo": (yt.get("titulo") or "").strip(),
-            "titulo_web": limpiar_titulo(yt.get("titulo") or ""),
+            "titulo": titulo_yt,
+            "titulo_web": limpiar_titulo(titulo_yt),
             "img_src": img_src, "img": "",
             "stories": stories,
         })
@@ -397,11 +405,13 @@ def generar_inicio(eds):
 </div>
 <div class="hero-media">
   <a href="{root}edicion/{slug}.html"><img src="{img}" alt="{alt}">
-  <span class="play"><span>▶</span></span></a>
+  {play}</a>
 </div>
 </div></div></section>""".format(
         root=root, slug=portada["slug"], img=esc(img_url(portada, root)),
         alt=esc(portada["titulo_web"]), titular=esc(titular),
+        play=('<span class="play"><span>▶</span></span>'
+              if portada.get("video") else ""),
         lead=esc(portada["stories"][0]["contexto"] if portada["stories"] else ""),
         fecha=esc(fecha_corta(portada["dt"])),
         edicion=esc(portada["edicion"].capitalize()))
