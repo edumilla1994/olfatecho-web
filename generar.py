@@ -31,7 +31,19 @@ FUENTE = os.path.normpath(os.path.join(
 SALIDA = os.path.join(AQUI, "docs")
 BASE_URL = os.getenv("OLFATECHO_BASE",
                      "https://edumilla1994.github.io/olfatecho-web").rstrip("/")
+DOMINIO_FILE = os.path.join(AQUI, "dominio.txt")
 EMAIL = "edumilla1994@gmail.com"
+
+
+def dominio_actual():
+    """Dominio propio guardado en dominio.txt (ej. olfatecho.com), o ''."""
+    try:
+        if os.path.isfile(DOMINIO_FILE):
+            d = open(DOMINIO_FILE, encoding="utf-8").read().strip()
+            return d.replace("https://", "").replace("http://", "").strip("/")
+    except OSError:
+        pass
+    return ""
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
@@ -147,6 +159,8 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 <meta property="og:image" content="{img}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{root}assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="{root}assets/logo.png">
+<meta name="theme-color" content="#b8431f">
 <link rel="stylesheet" href="{root}assets/style.css">
 {jsonld}
 </head>
@@ -366,6 +380,16 @@ def generar_noticia(ed, s, eds):
     if ed["video"]:
         video = """<p style="margin:18px 0"><a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver esta noticia en el video</a></p>""".format(url=esc(ed["url"]))
 
+    # lede = primera frase; el resto va al cuerpo (sin repetir el titular)
+    texto = (s["contexto"] or "").strip()
+    titulo_plano = re.sub(r"\s+", " ", s["title"]).strip()
+    if texto and titulo_plano and texto.lower().startswith(titulo_plano.lower()[:60]):
+        texto = texto[len(titulo_plano):].lstrip(" .:-–—")
+    partes = re.split(r"(?<=[.!?])\s+", texto.strip()) if texto else []
+    lede = partes[0] if partes else (s["contexto"] or s["title"])
+    cuerpo = " ".join(partes[1:]).strip() if len(partes) > 1 else ""
+    body_block = ('<div class="body"><p>%s</p></div>' % esc(cuerpo)) if cuerpo else ""
+
     jsonld = json.dumps({
         "@context": "https://schema.org",
         "@type": "NewsArticle",
@@ -390,9 +414,7 @@ def generar_noticia(ed, s, eds):
 <h1>{titulo}</h1>
 <div class="meta"><span>{fuente}</span><span>·</span><span>{fecha}</span><span>·</span><span>{ambito}</span></div>
 <p class="lede">{resumen}</p>
-<div class="body">
-<p>{cuerpo}</p>
-</div>
+{body_block}
 {fuente_box}
 {video}
 <div class="more"><h3>Más de esta edición</h3>{mas}</div>
@@ -400,8 +422,8 @@ def generar_noticia(ed, s, eds):
         root=root, eslug=ed["slug"], edicion=esc(ed["edicion"].capitalize()),
         genero=esc(s["genero"]), titulo=esc(s["title"]), fuente=esc(s["source"]),
         fecha=esc(fecha_larga(ed["dt"])), ambito=esc(s["ambito"]),
-        resumen=esc(s["contexto"] or s["title"]),
-        cuerpo=esc(s["contexto"] or "Lee la nota completa en el medio original."),
+        resumen=esc(lede),
+        body_block=body_block,
         fuente_box=fuente, video=video, mas=mas)
     doc += pie(root)
     return doc
@@ -472,10 +494,19 @@ def rss(eds):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="")
+    ap.add_argument("--dominio", default="", help="dominio propio, ej. olfatecho.com")
     args = ap.parse_args()
     global BASE_URL
     if args.base:
         BASE_URL = args.base.rstrip("/")
+    elif args.dominio:
+        dom = args.dominio.replace("https://", "").replace("http://", "").strip("/")
+        open(DOMINIO_FILE, "w", encoding="utf-8").write(dom + "\n")
+        BASE_URL = "https://" + dom
+    else:
+        dom = dominio_actual()
+        if dom:
+            BASE_URL = "https://" + dom
 
     eds = cargar_ediciones()
     if os.path.isdir(SALIDA):
@@ -508,6 +539,16 @@ def main():
     open(os.path.join(SALIDA, "rss.xml"), "w", encoding="utf-8").write(rss(eds))
     open(os.path.join(SALIDA, "robots.txt"), "w", encoding="utf-8").write(
         "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n" % BASE_URL)
+    open(os.path.join(SALIDA, "404.html"), "w", encoding="utf-8").write(
+        generar_pagina("Página no encontrada",
+                       "La página que buscas no existe.",
+                       "404",
+                       '<h1>Página no encontrada</h1>'
+                       '<p>La página que buscas no existe o cambió de dirección.</p>'
+                       '<p><a class="btn" href="index.html">Volver al inicio →</a></p>'))
+    dom = dominio_actual()
+    if dom:
+        open(os.path.join(SALIDA, "CNAME"), "w", encoding="utf-8").write(dom + "\n")
 
     print("OK: %d ediciones, %d noticias" % (len(eds), sum(len(e["stories"]) for e in eds)))
     print("Salida:", SALIDA)
