@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacidad — Olfatecho</title>
+<title>Privacidad — Olfatecho Noticias</title>
 <meta name="description" content="Política de privacidad de Olfatecho Noticias.">
 <link rel="canonical" href="https://edumilla1994.github.io/olfatecho-web/privacidad.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Olfatecho Noticias">
-<meta property="og:title" content="Privacidad — Olfatecho">
+<meta property="og:title" content="Privacidad — Olfatecho Noticias">
 <meta property="og:description" content="Política de privacidad de Olfatecho Noticias.">
 <meta property="og:url" content="https://edumilla1994.github.io/olfatecho-web/privacidad.html">
 <meta property="og:image" content="https://edumilla1994.github.io/olfatecho-web/assets/og-default.jpg">
@@ -29,7 +29,8 @@
   <img class="logo-mark" src="assets/logo.png" alt="Olfatecho">
   <span class="logo-text">OLFATECHO<small>NOTICIAS DEL PERÚ</small></span>
 </a>
-<nav class="nav">
+<button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+<nav class="nav" id="nav">
   <a href="index.html">Inicio</a>
   <a href="index.html#ediciones">Ediciones</a>
   <a href="nosotros.html">Nosotros</a>
@@ -41,12 +42,18 @@
 <p>Olfatecho Noticias es un sitio informativo. Esta política explica qué datos se usan cuando visitas la web o ves nuestros videos.</p>
 <h2>Datos que recopilamos</h2>
 <p>No pedimos registro ni datos personales para leer las noticias. El sitio es estático y no tiene formularios de usuario.</p>
-<h2>Cookies y terceros</h2>
-<p>Los videos se muestran con el reproductor de YouTube (modo privacidad mejorada). YouTube y Google pueden usar cookies propias según sus políticas. No controlamos esas cookies.</p>
+<h2>Cookies y publicidad</h2>
+<p>Usamos cookies propias y de terceros para mostrar anuncios y medir el tráfico. El proveedor de publicidad es <strong>Google AdSense</strong>, que puede usar cookies para mostrarte anuncios según tus visitas a este y otros sitios. Puedes aceptar o rechazar estas cookies en el aviso que aparece al entrar; si rechazas, no cargamos el script de publicidad.</p>
+<p>Más información: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Cómo usa Google las cookies en publicidad</a>.</p>
+<h2>Videos</h2>
+<p>Los videos se muestran con el reproductor de YouTube (modo privacidad mejorada). YouTube y Google pueden usar cookies propias según sus políticas.</p>
 <h2>Enlaces a otros medios</h2>
 <p>Cada noticia enlaza al artículo original de su medio. Al hacer clic saldrás de Olfatecho y se aplicarán las políticas del sitio de destino.</p>
 <h2>Contacto</h2>
-<p>Para consultas sobre privacidad escribe a <a href="mailto:edumilla1994@gmail.com">edumilla1994@gmail.com</a>.</p></div></main><footer class="site-footer"><div class="wrap">
+<p>Para consultas sobre privacidad escribe a <a href="mailto:edumilla1994@gmail.com">edumilla1994@gmail.com</a>.</p></div></main><div class="cookie" id="cookie-banner" hidden><div class="wrap cookie-inner">
+<p>Usamos cookies propias y de terceros (Google AdSense) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar. <a href="privacidad.html">Más información</a>.</p>
+<div class="actions"><button class="no" id="cookie-no">Rechazar</button><button class="ok" id="cookie-ok">Aceptar</button></div>
+</div></div><footer class="site-footer"><div class="wrap">
 <div class="footer-grid">
   <div>
     <h4>Olfatecho</h4>
@@ -58,6 +65,7 @@
     <p><a href="index.html#ediciones">Ediciones</a></p>
     <p><a href="nosotros.html">Nosotros</a></p>
     <p><a href="privacidad.html">Privacidad</a></p>
+    <p><a href="#" data-cookie-settings>Cookies</a></p>
   </div>
   <div>
     <h4>Contacto</h4>
@@ -66,6 +74,7 @@
   </div>
 </div>
 <div class="copy"><span>© 2026 Olfatecho. Todos los derechos reservados.</span>
-<span>Hecho en Perú 🇵🇪</span></div>
+<span>Hecho en Perú</span></div>
 </div></footer>
+<script src="assets/app.js" defer></script>
 </body></html>

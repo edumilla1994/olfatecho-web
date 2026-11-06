@@ -1,0 +1,2580 @@
+{
+ "url": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\docs\\index.html",
+ "at": "2026-11-06T05:53:07.734Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.58,
+    0.77,
+    0.49,
+    0.24,
+    0.48
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 4334,
+     "screens": 4.8,
+     "words": 878,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "📰"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "chars": 64,
+     "lines": 4,
+     "size": 46,
+     "vw": 3.2,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.12,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "right",
+     "widthRatio": 0.31,
+     "top": 195,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "lines": 4,
+     "size": 46,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "words": 10,
+      "chars": 64,
+      "lines": 4,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.31,
+      "top": 195,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 630,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 2263,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 2357,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 2555,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 2729,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 2927,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 3104,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 3278,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 3495,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 3648,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 3778,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.34,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      17,
+      18,
+      19,
+      22,
+      26,
+      28,
+      34,
+      46
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 13.5,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.6
+     },
+     "measureChars": 69,
+     "max": {
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "text": "📰 Olfatecho Noticias — viernes 6 de nov"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 6,
+     "microLabelShare": 0.021,
+     "microSamples": [
+      "Última edición · 6 nov 2026",
+      "Una mirada rápida, todos los días",
+      "Lo que está pasando",
+      "Olfatecho",
+      "Secciones",
+      "Contacto"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Última edición · 6 nov 2026",
+      "above": "📰 Olfatecho Noticias — viernes 6 de nov",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": true,
+      "size": 11.5,
+      "top": 151
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 34,
+      "top": 2357
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 2555
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 2729
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 2927
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 3104
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 3278
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 3495
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 3648
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 3778
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#171412",
+       "top": 4052,
+       "hsl": {
+        "h": 24,
+        "s": 0.12,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#6b625a",
+       "share": 0.51
+      },
+      {
+       "color": "#171412",
+       "share": 0.34
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#b8431f",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#171412",
+      "hsl": {
+       "h": 24,
+       "s": 0.12,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.hero-media → rgba(23, 20, 18, 0.18) 0px 20px 50px 0px",
+      "span → rgba(0, 0, 0, 0.25) 0px 8px 24px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 11,
+     "hairlineSamples": [
+      "header.site-header 1440px",
+      "div.news-item 573px",
+      "div.news-item 573px",
+      "div.news-item 573px",
+      "div.news-item 573px"
+     ],
+     "outlinedBoxes": 12,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 707
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.16
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 77,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 4334,
+    "margins": {
+     "left": 182,
+     "right": 182
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 113,
+      "height": 473,
+      "words": 58,
+      "media": 1,
+      "middle": 34,
+      "heading": {
+       "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (pr",
+       "size": 46,
+       "tag": "h1"
+      },
+      "left": 182,
+      "right": 197,
+      "textLeft": 815,
+      "textRight": 197,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 586,
+      "height": 1633,
+      "words": 240,
+      "media": 12,
+      "middle": 24,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 182,
+      "right": 182,
+      "textLeft": 182,
+      "textRight": 182,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 2219,
+      "height": 1782,
+      "words": 537,
+      "media": 0,
+      "middle": 60,
+      "heading": {
+       "text": "01",
+       "size": 34,
+       "tag": "div"
+      },
+      "left": 182,
+      "right": 215,
+      "textLeft": 182,
+      "textRight": 215,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 4052,
+      "height": 282,
+      "words": 44,
+      "media": 0,
+      "middle": 248,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 12,
+       "tag": "h4"
+      },
+      "left": 182,
+      "right": 182,
+      "textLeft": 182,
+      "textRight": 182,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "size": 46,
+      "top": 195,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 290,
+      "n": 9
+     },
+     {
+      "x": 201,
+      "n": 4
+     },
+     {
+      "x": 567,
+      "n": 4
+     },
+     {
+      "x": 815,
+      "n": 4
+     },
+     {
+      "x": 933,
+      "n": 4
+     },
+     {
+      "x": 182,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 27,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.11,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 180,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.66,
+    0.86,
+    0.86,
+    0.57,
+    0.4,
+    0.57
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 5393,
+     "screens": 5.3,
+     "words": 878,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "📰"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "chars": 64,
+     "lines": 2,
+     "size": 30.7,
+     "vw": 4,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.12,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.94,
+     "top": 636,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "lines": 2,
+     "size": 30.7,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "OLFATECHO NOTICIAS DEL PERÚ",
+      "words": 4,
+      "chars": 27,
+      "lines": 2,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0.02,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 46,
+      "mixedFonts": [
+       "Georgia",
+       "Segoe UI"
+      ],
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "words": 10,
+      "chars": 64,
+      "lines": 2,
+      "size": 30.7,
+      "vw": 4,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 636,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 934,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 3265,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 3358,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 3533,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 3707,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 3861,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 4014,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 4168,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 4363,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 4517,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 4626,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.34,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      17,
+      18,
+      19,
+      22,
+      26,
+      28,
+      31,
+      34
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 13.5,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.6
+     },
+     "measureChars": 91,
+     "max": {
+      "size": 34,
+      "vw": 4.4,
+      "font": "Georgia",
+      "text": "01"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 6,
+     "microLabelShare": 0.021,
+     "microSamples": [
+      "Última edición · 6 nov 2026",
+      "Una mirada rápida, todos los días",
+      "Lo que está pasando",
+      "Olfatecho",
+      "Secciones",
+      "Contacto"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Última edición · 6 nov 2026",
+      "above": "📰 Olfatecho Noticias — viernes 6 de nov",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": true,
+      "size": 11.5,
+      "top": 592
+     },
+     {
+      "text": "Ver la edición completa →",
+      "above": "Ediciones recientes",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 13.5,
+      "top": 837
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 34,
+      "top": 3358
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 3533
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 3707
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 3861
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 4014
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 4168
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 4363
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 4517
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 4626
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#111111",
+       "top": 151,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#6b625a",
+       "share": 0.51
+      },
+      {
+       "color": "#171412",
+       "share": 0.34
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#b8431f",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#171412",
+      "hsl": {
+       "h": 24,
+       "s": 0.12,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.hero-media → rgba(23, 20, 18, 0.18) 0px 20px 50px 0px",
+      "span → rgba(0, 0, 0, 0.25) 0px 8px 24px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 11,
+     "hairlineSamples": [
+      "header.site-header 768px",
+      "div.news-item 724px",
+      "div.news-item 724px",
+      "div.news-item 724px",
+      "div.news-item 724px"
+     ],
+     "outlinedBoxes": 12,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1011
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.37
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 77,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 5393,
+    "margins": {
+     "left": 22,
+     "right": 22
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 113,
+      "height": 777,
+      "words": 58,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 22,
+      "right": 22,
+      "textLeft": 22,
+      "textRight": 183,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 890,
+      "height": 2331,
+      "words": 240,
+      "media": 12,
+      "middle": 24,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 22,
+      "right": 22,
+      "textLeft": 22,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 3221,
+      "height": 1840,
+      "words": 537,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "01",
+       "size": 34,
+       "tag": "div"
+      },
+      "left": 22,
+      "right": 22,
+      "textLeft": 22,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 5111,
+      "height": 282,
+      "words": 44,
+      "media": 0,
+      "middle": 145,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 12,
+       "tag": "h4"
+      },
+      "left": 22,
+      "right": 22,
+      "textLeft": 22,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "size": 31,
+      "top": 636,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 130,
+      "n": 9
+     },
+     {
+      "x": 41,
+      "n": 8
+     },
+     {
+      "x": 414,
+      "n": 6
+     },
+     {
+      "x": 22,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 27,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.71,
+    0.82,
+    0.82,
+    0.87,
+    0.88,
+    0.88,
+    0.49,
+    0.56,
+    0.49,
+    0.59,
+    0.88
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 402,
+     "h": 870
+    },
+    "page": {
+     "height": 8948,
+     "screens": 10.3,
+     "words": 874,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg",
+      "hqdefault.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "📰"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "chars": 64,
+     "lines": 4,
+     "size": 30,
+     "vw": 7.5,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.12,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.86,
+     "top": 413,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+     "words": 10,
+     "lines": 4,
+     "size": 30,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "OLFATECHO NOTICIAS DEL PERÚ",
+      "words": 4,
+      "chars": 27,
+      "lines": 2,
+      "size": 26,
+      "vw": 6.5,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0.02,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.45,
+      "top": 41,
+      "mixedFonts": [
+       "Georgia",
+       "Segoe UI"
+      ],
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "▶",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.5,
+      "font": "Segoe UI",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 141,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "words": 10,
+      "chars": 64,
+      "lines": 4,
+      "size": 30,
+      "vw": 7.5,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 413,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 2,
+      "size": 28,
+      "vw": 7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.42,
+      "top": 803,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 28,
+      "vw": 7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 5354,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 5491,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 5821,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 6105,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 6436,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 6725,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 7009,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "01",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 7377,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "02",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 7619,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "03",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 7794,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.5,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 8184,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 15,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.66,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.34,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      17,
+      18,
+      19,
+      22,
+      26,
+      28,
+      30,
+      34
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 13.5,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.6
+     },
+     "measureChars": 35,
+     "max": {
+      "size": 34,
+      "vw": 8.5,
+      "font": "Georgia",
+      "text": "01"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 6,
+     "microLabelShare": 0.021,
+     "microSamples": [
+      "Última edición · 6 nov 2026",
+      "Una mirada rápida, todos los días",
+      "Lo que está pasando",
+      "Olfatecho",
+      "Secciones",
+      "Contacto"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Última edición · 6 nov 2026",
+      "above": "📰 Olfatecho Noticias — viernes 6 de nov",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": true,
+      "size": 11.5,
+      "top": 370
+     },
+     {
+      "text": "Ver la edición completa →",
+      "above": "Ediciones recientes",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 13.5,
+      "top": 706
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 34,
+      "top": 5491
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 5821
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 6105
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 6436
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 6725
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 7009
+     },
+     {
+      "text": "01",
+      "size": 34,
+      "top": 7377
+     },
+     {
+      "text": "02",
+      "size": 34,
+      "top": 7619
+     },
+     {
+      "text": "03",
+      "size": 34,
+      "top": 7794
+     }
+    ],
+    "color": {
+     "bodyBg": "#faf7f2",
+     "bodyBgHsl": {
+      "h": 38,
+      "s": 0.44,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf9",
+       "top": 923,
+       "hsl": {
+        "h": 40,
+        "s": 1,
+        "l": 0.99
+       }
+      },
+      {
+       "color": "#171412",
+       "top": 8494,
+       "hsl": {
+        "h": 24,
+        "s": 0.12,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#6b625a",
+       "share": 0.51
+      },
+      {
+       "color": "#171412",
+       "share": 0.33
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#b8431f",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#171412",
+      "hsl": {
+       "h": 24,
+       "s": 0.12,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.hero-media → rgba(23, 20, 18, 0.18) 0px 20px 50px 0px",
+      "span → rgba(0, 0, 0, 0.25) 0px 8px 24px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 11,
+     "hairlineSamples": [
+      "header.site-header 390px",
+      "div.news-item 346px",
+      "div.news-item 346px",
+      "div.news-item 346px",
+      "div.news-item 346px"
+     ],
+     "outlinedBoxes": 12,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 923
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.19
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 67,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 402,
+     "h": 870
+    },
+    "pageH": 8948,
+    "margins": {
+     "left": 22,
+     "right": 34
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 103,
+      "height": 656,
+      "words": 58,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (pr",
+       "size": 30,
+       "tag": "h1"
+      },
+      "left": 22,
+      "right": 34,
+      "textLeft": 22,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 759,
+      "height": 4551,
+      "words": 240,
+      "media": 12,
+      "middle": 0,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 22,
+      "right": 35,
+      "textLeft": 22,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 5310,
+      "height": 3134,
+      "words": 537,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "01",
+       "size": 34,
+       "tag": "div"
+      },
+      "left": 22,
+      "right": 34,
+      "textLeft": 22,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 8494,
+      "height": 454,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 12,
+       "tag": "h4"
+      },
+      "left": 22,
+      "right": 0,
+      "textLeft": 22,
+      "textRight": 0,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "📰 Olfatecho Noticias — viernes 6 de noviembre (primera edición)",
+      "size": 30,
+      "top": 413,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [
+     {
+      "text": "edumilla1994@gmail.com",
+      "side": "right",
+      "px": 0
+     }
+    ],
+    "edges": [
+     {
+      "x": 41,
+      "n": 14
+     },
+     {
+      "x": 130,
+      "n": 9
+     },
+     {
+      "x": 22,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 27,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"📰 Olfatecho Noticias — viernes 6 de noviembre (\" → 4 lines (10 words, 46px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "1 eyebrow/kicker label(s) above headings: \"Última edición · 6 nov 2026\" (pill) above \"📰 Olfatecho Noticias — viernes 6 de nov\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"01\", \"02\", \"03\", \"01\", \"02\", \"03\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "6 tiny uppercase letter-spaced labels (e.g. \"Última edición · 6 nov 2026\", \"Una mirada rápida, todos los días\", \"Lo que está pasando\", \"Olfatecho\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "emoji",
+   "width": 1440,
+   "message": "Emoji in the page: 📰",
+   "fix": "Remove. Use words or real imagery.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "2 box-shadow(s) on elements at rest: div.hero-media → rgba(23, 20, 18, 0.18) 0px 20px 50px 0px | span → rgba(0, 0, 0, 0.25) 0px 8px 24px 0px",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "11 thin rule(s)/divider line(s): header.site-header 1440px | div.news-item 573px | div.news-item 573px | div.news-item 573px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "12 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "palette-claude",
+   "width": 1440,
+   "message": "Cream + terracotta palette (page background #faf7f2, text #b8431f).",
+   "fix": "Re-draw the palette from the library. This pairing reads as an assistant brand, not yours.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "12 different font sizes (11, 12, 13, 14, 17, 18, 19, 22, 26, 28, 34, 46).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 13.5px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 1440,
+   "message": "The running text is a soft grey on its ground (5.6:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "32 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 46px (3.2vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "WARN",
+   "id": "mixed-font-headline",
+   "width": 768,
+   "message": "1 headline(s) switch typeface or to italic mid-line (the \"one italic serif word\" move).",
+   "fix": "Set the whole headline in one face. Emphasis comes from the words.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 768,
+   "message": "Longest paragraph runs about 91 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch)."
+  },
+  {
+   "level": "WARN",
+   "id": "small-title",
+   "width": 768,
+   "message": "The h1 is 31px (\"📰 Olfatecho Noticias — viernes 6 de noviembre (pr\").",
+   "fix": "Set the title at display size, or make the large text of the first screen the h1."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"📰 Olfatecho Noticias — viernes 6 de noviembre (\" → 4 lines (10 words, 30px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 390,
+   "message": "The margins differ: 22px on the left, 34px on the right, at 390px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "FAIL",
+   "id": "edge-text",
+   "width": 390,
+   "message": "1 text block(s) sit within 12px of the screen edge: \"edumilla1994@gmail.com\" (0px from the right)",
+   "fix": "Keep text inside the page margin (16–20px). Only display type deliberately bled past the edge may touch it."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\desktop-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\mobile-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\before\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

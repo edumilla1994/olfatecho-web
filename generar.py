@@ -4,17 +4,15 @@
 Lee las ediciones ya subidas a YouTube desde
 ../noticiasdiarias/storage/noticias_diarias y genera:
 
-  site/index.html
-  site/edicion/<fecha>-<edicion>.html
-  site/noticia/<fecha>-<edicion>-<n>-<titulo>.html
-  site/nosotros.html
-  site/privacidad.html
-  site/sitemap.xml
-  site/rss.xml
-  site/robots.txt
+  docs/index.html
+  docs/edicion/<fecha>-<edicion>.html
+  docs/noticia/<fecha>-<edicion>-<n>-<titulo>.html
+  docs/nosotros.html · docs/privacidad.html · docs/404.html
+  docs/sitemap.xml · docs/rss.xml · docs/robots.txt · docs/ads.txt
+  docs/CNAME (si hay dominio propio en dominio.txt)
 
-No copia los artículos: muestra titular + resumen corto + enlace al medio.
-Uso:  python generar.py [--base https://...]
+No copia los artículos: titular + resumen corto + enlace al medio.
+Uso:  python generar.py [--dominio olfatecho.com] [--base https://...]
 """
 import argparse
 import html
@@ -33,21 +31,26 @@ BASE_URL = os.getenv("OLFATECHO_BASE",
                      "https://edumilla1994.github.io/olfatecho-web").rstrip("/")
 DOMINIO_FILE = os.path.join(AQUI, "dominio.txt")
 EMAIL = "edumilla1994@gmail.com"
-
-
-def dominio_actual():
-    """Dominio propio guardado en dominio.txt (ej. olfatecho.com), o ''."""
-    try:
-        if os.path.isfile(DOMINIO_FILE):
-            d = open(DOMINIO_FILE, encoding="utf-8").read().strip()
-            return d.replace("https://", "").replace("http://", "").strip("/")
-    except OSError:
-        pass
-    return ""
+SITE_NAME = "Olfatecho Noticias"
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
          "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+
+
+def _adsense_client():
+    p = os.path.join(AQUI, "adsense.txt")
+    try:
+        if os.path.isfile(p):
+            v = open(p, encoding="utf-8").read().strip().splitlines()[0].strip()
+            if v.startswith("ca-pub-"):
+                return v
+    except OSError:
+        pass
+    return ""
+
+
+ADSENSE_CLIENT = _adsense_client()
 
 
 def esc(s):
@@ -86,6 +89,29 @@ def resumen(texto, titulo=""):
 def video_id(url):
     m = re.search(r"(?:youtu\.be/|v=)([A-Za-z0-9_-]{6,})", url or "")
     return m.group(1) if m else ""
+
+
+def limpiar_titulo(t):
+    """Quita emoji, prefijo de marca y '(primera edición)' para la web."""
+    t = re.sub(r"^[^\wÁÉÍÓÚáéíóúÑñ]+", "", (t or "").strip())
+    t = re.sub(r"^Olfatecho Noticias\s*[—–-]\s*", "", t, flags=re.I)
+    t = re.sub(r"\s*\((primera|segunda|tercera|cuarta|quinta|sexta|séptima|"
+               r"octava|novena|décima|undécima|duodécima|décima primera|"
+               r"décima segunda|décima tercera|décima cuarta|décima quinta|"
+               r"décima sexta|décima séptima|décima octava|décima novena|"
+               r"vigésima)[^)]*edici[oó]n\)\s*$", "", t, flags=re.I)
+    t = t.strip()
+    return (t[:1].upper() + t[1:]) if t else t
+
+
+def dominio_actual():
+    try:
+        if os.path.isfile(DOMINIO_FILE):
+            d = open(DOMINIO_FILE, encoding="utf-8").read().strip()
+            return d.replace("https://", "").replace("http://", "").strip("/")
+    except OSError:
+        pass
+    return ""
 
 
 def cargar_ediciones():
@@ -129,20 +155,75 @@ def cargar_ediciones():
                 "published": (n.get("published") or "").strip(),
                 "slug": "%s-%d-%s" % (slug, i, slugify(n.get("title"))[:60]),
             })
+        img_src = ""
+        fotos_dir = os.path.join(carpeta, "fotos")
+        if os.path.isdir(fotos_dir):
+            imgs = [f for f in os.listdir(fotos_dir)
+                    if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))]
+            pref = [f for f in imgs if f.lower().startswith("story")]
+            def _peso(f):
+                n = f.lower()
+                pri = 3 if "_a" in n else (2 if ("_du" in n or "_se" in n) else 1)
+                try:
+                    tam = os.path.getsize(os.path.join(fotos_dir, f))
+                except OSError:
+                    tam = 0
+                return (pri, tam)
+            cands = pref or imgs
+            if cands:
+                img_src = os.path.join(fotos_dir, max(cands, key=_peso))
         eds.append({
             "folder": d, "dt": dt, "edicion": ed_txt,
             "num": int(j.get("edicion_num") or 0),
             "slug": slug, "video": vid,
             "url": (yt.get("url") or "").strip(),
             "titulo": (yt.get("titulo") or "").strip(),
+            "titulo_web": limpiar_titulo(yt.get("titulo") or ""),
+            "img_src": img_src, "img": "",
             "stories": stories,
         })
     eds.sort(key=lambda e: e["dt"], reverse=True)
     return eds
 
 
+def thumb(ed):
+    if ed.get("img"):
+        return ed["img"]
+    return "https://i.ytimg.com/vi/%s/hqdefault.jpg" % ed["video"] if ed["video"] else ""
+
+
+def img_url(ed, root):
+    u = thumb(ed)
+    return u if u.startswith("http") else root + u
+
+
+def og_abs(ed):
+    u = thumb(ed)
+    return u if u.startswith("http") else BASE_URL + "/" + u
+
+
+def preparar_imagen(src, dst):
+    try:
+        from PIL import Image, ImageOps
+        im = Image.open(src).convert("RGB")
+        im = ImageOps.fit(im, (1280, 720), Image.LANCZOS, centering=(0.5, 0.42))
+        im.save(dst, quality=84, optimize=True)
+        return True
+    except Exception:
+        try:
+            shutil.copyfile(src, dst)
+            return True
+        except Exception:
+            return False
+
+
 def head(titulo, desc, canonical, root, og_image="", jsonld=""):
     img = og_image or (BASE_URL + "/assets/og-default.jpg")
+    ads = ""
+    if ADSENSE_CLIENT:
+        ads = ('<meta name="google-adsense-account" content="%s">\n'
+               '<script>window.ADSENSE_CLIENT="%s";</script>\n'
+               % (esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT)))
     return """<!doctype html>
 <html lang="es">
 <head>
@@ -152,7 +233,7 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Olfatecho Noticias">
+<meta property="og:site_name" content="{site}">
 <meta property="og:title" content="{titulo}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canonical}">
@@ -162,11 +243,11 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 <link rel="apple-touch-icon" href="{root}assets/logo.png">
 <meta name="theme-color" content="#b8431f">
 <link rel="stylesheet" href="{root}assets/style.css">
-{jsonld}
+{ads}{jsonld}
 </head>
 <body>
 """.format(titulo=esc(titulo), desc=esc(desc), canonical=esc(canonical),
-           root=root, img=esc(img), jsonld=jsonld)
+           site=esc(SITE_NAME), root=root, img=esc(img), ads=ads, jsonld=jsonld)
 
 
 def cabecera(root):
@@ -179,7 +260,8 @@ def cabecera(root):
   <img class="logo-mark" src="{root}assets/logo.png" alt="Olfatecho">
   <span class="logo-text">OLFATECHO<small>NOTICIAS DEL PERÚ</small></span>
 </a>
-<nav class="nav">
+<button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+<nav class="nav" id="nav">
   <a href="{root}index.html">Inicio</a>
   <a href="{root}index.html#ediciones">Ediciones</a>
   <a href="{root}nosotros.html">Nosotros</a>
@@ -190,7 +272,11 @@ def cabecera(root):
 
 
 def pie(root):
-    return """<footer class="site-footer"><div class="wrap">
+    cookie = """<div class="cookie" id="cookie-banner" hidden><div class="wrap cookie-inner">
+<p>Usamos cookies propias y de terceros (Google AdSense) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar. <a href="{root}privacidad.html">Más información</a>.</p>
+<div class="actions"><button class="no" id="cookie-no">Rechazar</button><button class="ok" id="cookie-ok">Aceptar</button></div>
+</div></div>""".format(root=root)
+    return cookie + """<footer class="site-footer"><div class="wrap">
 <div class="footer-grid">
   <div>
     <h4>Olfatecho</h4>
@@ -202,6 +288,7 @@ def pie(root):
     <p><a href="{root}index.html#ediciones">Ediciones</a></p>
     <p><a href="{root}nosotros.html">Nosotros</a></p>
     <p><a href="{root}privacidad.html">Privacidad</a></p>
+    <p><a href="#" data-cookie-settings>Cookies</a></p>
   </div>
   <div>
     <h4>Contacto</h4>
@@ -210,76 +297,77 @@ def pie(root):
   </div>
 </div>
 <div class="copy"><span>© {anio} Olfatecho. Todos los derechos reservados.</span>
-<span>Hecho en Perú 🇵🇪</span></div>
+<span>Hecho en Perú</span></div>
 </div></footer>
+<script src="{root}assets/app.js" defer></script>
 </body></html>
 """.format(root=root, email=EMAIL, anio=datetime.now().year)
 
 
-def thumb(ed):
-    return "https://i.ytimg.com/vi/%s/hqdefault.jpg" % ed["video"] if ed["video"] else ""
-
-
-def tarjeta_edicion(ed, root):
-    return """<a class="card" href="{root}edicion/{slug}.html">
-<img src="{img}" alt="{alt}" loading="lazy">
+def tarjeta_edicion(ed, root, i=0):
+    return """<a class="card reveal" href="{root}edicion/{slug}.html" style="--d:{d}s">
+<div class="card-media"><img src="{img}" alt="{alt}" loading="lazy"></div>
 <div class="card-body">
-  <span class="tag">{tag}</span>
+  <span class="card-genre">{edicion}</span>
   <h3>{titulo}</h3>
   <span class="meta">{fecha} · {n} noticias</span>
 </div></a>""".format(
-        root=root, slug=ed["slug"], img=esc(thumb(ed)),
-        alt=esc(ed["titulo"] or ed["edicion"]),
-        tag=esc(ed["edicion"].capitalize()), titulo=esc(ed["titulo"] or "Olfatecho Noticias"),
-        fecha=esc(fecha_corta(ed["dt"])), n=len(ed["stories"]))
+        root=root, slug=ed["slug"], img=esc(img_url(ed, root)),
+        alt=esc(ed["titulo_web"] or ed["edicion"]),
+        edicion=esc(ed["edicion"].capitalize()),
+        titulo=esc(ed["titulo_web"] or "Olfatecho Noticias"),
+        fecha=esc(fecha_corta(ed["dt"])), n=len(ed["stories"]),
+        d=(i % 3) * 0.08)
 
 
-def item_noticia(ed, s, root, mostrar_num=True):
-    num = '<div class="num">%02d</div>' % s["n"] if mostrar_num else ""
-    return """<div class="news-item">
-{num}
-<div>
-  <h3><a href="{root}noticia/{slug}.html">{titulo}</a></h3>
-  <p>{resumen}</p>
-  <p class="meta" style="margin-top:6px">{fuente} · {edicion}</p>
-</div></div>""".format(
-        num=num, root=root, slug=s["slug"], titulo=esc(s["title"]),
-        resumen=esc(s["contexto"] or s["title"]),
-        fuente=esc(s["source"]), edicion=esc(ed["edicion"].capitalize()))
+def item_noticia(ed, s, root, i=0):
+    return """<a class="news-item reveal" href="{root}noticia/{slug}.html" style="--d:{d}s">
+<div class="genre">{genero}</div>
+<h3>{titulo}</h3>
+<p>{resumen}</p>
+<div class="meta">{fuente} · {edicion}</div>
+</a>""".format(
+        root=root, slug=s["slug"], genero=esc(s["genero"]),
+        titulo=esc(s["title"]), resumen=esc(s["contexto"] or s["title"]),
+        fuente=esc(s["source"]), edicion=esc(ed["edicion"].capitalize()),
+        d=(i % 3) * 0.08)
 
 
 def generar_inicio(eds):
     root = ""
-    portada = eds[0] if eds else None
-    if not portada:
-        cuerpo = '<div class="empty">Todavía no hay ediciones publicadas.</div>'
-        html_doc = head("Olfatecho Noticias", "Noticias del Perú y el mundo.",
-                        BASE_URL + "/", root) + cabecera(root) + \
-            '<main class="wrap">' + cuerpo + "</main>" + pie(root)
-        return html_doc
+    if not eds:
+        doc = head(SITE_NAME, "Noticias del Perú y el mundo.", BASE_URL + "/", root)
+        doc += cabecera(root) + '<main class="wrap"><div class="empty">Todavía no hay ediciones publicadas.</div></main>' + pie(root)
+        return doc
+    portada = eds[0]
     hero = """<section class="hero"><div class="wrap"><div class="hero-grid">
+<div class="hero-copy">
+  <h1>El día en 2 minutos.</h1>
+  <p class="hero-lead">{lead}</p>
+  <div class="hero-actions">
+    <a class="btn" href="{root}edicion/{slug}.html">Ver la edición completa →</a>
+    <span class="hero-edition">Última edición · {fecha} · {edicion}</span>
+  </div>
+</div>
 <div class="hero-media">
   <a href="{root}edicion/{slug}.html"><img src="{img}" alt="{alt}">
   <span class="play"><span>▶</span></span></a>
 </div>
-<div>
-  <span class="kicker">Última edición · {fecha}</span>
-  <h1>{titulo}</h1>
-  <p>{resumen}</p>
-  <a class="btn" href="{root}edicion/{slug}.html">Ver la edición completa →</a>
-</div>
 </div></div></section>""".format(
-        root=root, slug=portada["slug"], img=esc(thumb(portada)),
-        alt=esc(portada["titulo"]), fecha=esc(fecha_corta(portada["dt"])),
-        titulo=esc(portada["titulo"] or "Olfatecho Noticias"),
-        resumen=esc(portada["stories"][0]["contexto"] if portada["stories"] else ""))
+        root=root, slug=portada["slug"], img=esc(img_url(portada, root)),
+        alt=esc(portada["titulo_web"]),
+        lead=esc(portada["stories"][0]["contexto"] if portada["stories"] else ""),
+        fecha=esc(fecha_corta(portada["dt"])),
+        edicion=esc(portada["edicion"].capitalize()))
 
-    grid = "".join(tarjeta_edicion(e, root) for e in eds[1:13])
+    grid = "".join(tarjeta_edicion(e, root, i) for i, e in enumerate(eds[1:13]))
     ultimas = ""
+    k = 0
     for e in eds[:3]:
         for s in e["stories"][:3]:
-            ultimas += item_noticia(e, s, root)
-    side = """<div class="side-box">
+            ultimas += item_noticia(e, s, root, k)
+            k += 1
+    side = """<div class="side-box reveal">
 <h3>La noticia, completa</h3>
 <p>Cada edición dura menos de dos minutos. En la web tienes el resumen de cada historia y el enlace directo al medio original para leerla completa.</p>
 <a class="btn" href="{root}nosotros.html">Conoce Olfatecho →</a>
@@ -287,23 +375,20 @@ def generar_inicio(eds):
 
     jsonld = json.dumps({
         "@context": "https://schema.org", "@type": "WebSite",
-        "name": "Olfatecho Noticias", "url": BASE_URL + "/",
-        "potentialAction": {"@type": "SearchAction",
-                            "target": BASE_URL + "/?q={search_term_string}",
-                            "query-input": "required name=search_term_string"},
+        "name": SITE_NAME, "url": BASE_URL + "/",
     }, ensure_ascii=False)
 
     doc = head("Olfatecho Noticias — Perú y el mundo, en 2 minutos",
                "Ediciones cortas de noticias del Perú y el mundo, con enlaces a las fuentes originales.",
-               BASE_URL + "/", root, og_image=thumb(portada),
+               BASE_URL + "/", root, og_image=og_abs(portada),
                jsonld='<script type="application/ld+json">%s</script>' % jsonld)
     doc += cabecera(root)
     doc += hero
     doc += """<section class="section" id="ediciones"><div class="wrap">
-<div class="section-head"><h2>Ediciones recientes</h2><span>Una mirada rápida, todos los días</span></div>
+<div class="section-head"><h2>Ediciones recientes</h2><a class="more-link" href="#ediciones">Una mirada rápida, todos los días</a></div>
 <div class="grid-3">%s</div></div></section>""" % grid
     doc += """<section class="section"><div class="wrap"><div class="news-list">
-<div><div class="section-head"><h2>Últimas noticias</h2><span>Lo que está pasando</span></div>%s</div>
+<div><div class="section-head"><h2>Últimas noticias</h2></div>%s</div>
 <div>%s</div>
 </div></div></section>""" % (ultimas, side)
     doc += pie(root)
@@ -316,19 +401,16 @@ def generar_edicion(ed, eds):
     prev_ed = eds[idx + 1] if idx + 1 < len(eds) else None
     next_ed = eds[idx - 1] if idx > 0 else None
     stories = ""
-    for s in ed["stories"]:
-        stories += """<article class="story-card">
-<div class="story-index">{n:02d}</div>
-<div>
-  <span class="tag" style="color:var(--terra);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">{genero}</span>
-  <h2><a href="{root}noticia/{slug}.html">{titulo}</a></h2>
-  <p>{resumen}</p>
-  <div class="story-links">
-    <a href="{root}noticia/{slug}.html">Leer el resumen →</a>
-    {fuente_link}
-  </div>
+    for i, s in enumerate(ed["stories"]):
+        stories += """<article class="story-card reveal" style="--d:{d}s">
+<div class="genre">{genero}</div>
+<h2><a href="{root}noticia/{slug}.html">{titulo}</a></h2>
+<p>{resumen}</p>
+<div class="story-links">
+  <a href="{root}noticia/{slug}.html">Leer el resumen →</a>
+  {fuente_link}
 </div></article>""".format(
-            n=s["n"], genero=esc(s["genero"]), root=root, slug=s["slug"],
+            d=(i % 3) * 0.08, genero=esc(s["genero"]), root=root, slug=s["slug"],
             titulo=esc(s["title"]), resumen=esc(s["contexto"] or s["title"]),
             fuente_link=('<a href="%s" target="_blank" rel="noopener nofollow">'
                          'Nota completa en %s ↗</a>' % (esc(s["link"]), esc(s["source"])))
@@ -342,24 +424,24 @@ def generar_edicion(ed, eds):
     video = ""
     if ed["video"]:
         video = """<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{titulo}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>""".format(
-            vid=ed["video"], titulo=esc(ed["titulo"]))
+            vid=ed["video"], titulo=esc(ed["titulo_web"]))
 
-    doc = head("%s — Olfatecho Noticias" % (ed["titulo"] or ed["edicion"]),
+    doc = head("%s — %s" % (ed["titulo_web"] or ed["edicion"], SITE_NAME),
                "Edición del %s con %d noticias del Perú y el mundo." % (fecha_larga(ed["dt"]), len(ed["stories"])),
                "%s/edicion/%s.html" % (BASE_URL, ed["slug"]), root,
-               og_image=thumb(ed))
+               og_image=og_abs(ed))
     doc += cabecera(root)
-    doc += """<main class="wrap"><div class="edition-head">
+    doc += """<div class="progress" id="progress"></div>
+<main class="wrap"><div class="edition-head">
 <div class="breadcrumb"><a href="{root}index.html">Inicio</a> / Ediciones</div>
-<span class="kicker">{edicion}</span>
 <h1>{titulo}</h1>
-<div class="edition-meta"><span>{fecha}</span><span>·</span><span>{n} noticias</span><span>·</span><span>Video: 2 minutos</span></div>
+<div class="edition-meta"><span>{edicion}</span><span>·</span><span>{fecha}</span><span>·</span><span>{n} noticias</span></div>
 </div>
 {video}
-<section class="section" style="padding-top:18px">{stories}</section>
+<section class="section" style="padding-top:22px">{stories}</section>
 <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0 30px">{nav}</div>
-</main>""".format(root=root, edicion=esc(ed["edicion"].capitalize()),
-                 titulo=esc(ed["titulo"] or "Olfatecho Noticias"),
+</main>""".format(root=root, titulo=esc(ed["titulo_web"] or "Olfatecho Noticias"),
+                 edicion=esc(ed["edicion"].capitalize()),
                  fecha=esc(fecha_larga(ed["dt"])), n=len(ed["stories"]),
                  video=video, stories=stories, nav=nav)
     doc += pie(root)
@@ -378,9 +460,8 @@ def generar_noticia(ed, s, eds):
 </div>""".format(fuente=esc(s["source"]), link=esc(s["link"]))
     video = ""
     if ed["video"]:
-        video = """<p style="margin:18px 0"><a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver esta noticia en el video</a></p>""".format(url=esc(ed["url"]))
+        video = """<p style="margin:22px 0"><a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver esta noticia en el video</a></p>""".format(url=esc(ed["url"]))
 
-    # lede = primera frase; el resto va al cuerpo (sin repetir el titular)
     texto = (s["contexto"] or "").strip()
     titulo_plano = re.sub(r"\s+", " ", s["title"]).strip()
     if texto and titulo_plano and texto.lower().startswith(titulo_plano.lower()[:60]):
@@ -390,30 +471,34 @@ def generar_noticia(ed, s, eds):
     cuerpo = " ".join(partes[1:]).strip() if len(partes) > 1 else ""
     body_block = ('<div class="body"><p>%s</p></div>' % esc(cuerpo)) if cuerpo else ""
 
+    canonical = "%s/noticia/%s.html" % (BASE_URL, s["slug"])
+    share = """<div class="share">
+<a href="https://wa.me/?text={wa}" target="_blank" rel="noopener">WhatsApp</a>
+<a href="https://twitter.com/intent/tweet?text={tw}&url={url}" target="_blank" rel="noopener">X</a>
+<button type="button" data-copy="{url}">Copiar enlace</button>
+</div>""".format(wa=esc(s["title"] + " " + canonical), tw=esc(s["title"]), url=esc(canonical))
+
     jsonld = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": s["title"],
-        "description": s["contexto"],
+        "@context": "https://schema.org", "@type": "NewsArticle",
+        "headline": s["title"], "description": s["contexto"],
         "datePublished": ed["dt"].isoformat(),
-        "author": {"@type": "Organization", "name": "Olfatecho Noticias"},
-        "publisher": {"@type": "Organization", "name": "Olfatecho Noticias"},
-        "mainEntityOfPage": "%s/noticia/%s.html" % (BASE_URL, s["slug"]),
-        "isBasedOn": s["link"] or "",
+        "author": {"@type": "Organization", "name": SITE_NAME},
+        "publisher": {"@type": "Organization", "name": SITE_NAME},
+        "mainEntityOfPage": canonical, "isBasedOn": s["link"] or "",
     }, ensure_ascii=False)
 
-    doc = head("%s — Olfatecho" % s["title"],
-               s["contexto"] or s["title"],
-               "%s/noticia/%s.html" % (BASE_URL, s["slug"]), root,
-               og_image=thumb(ed),
+    doc = head("%s — %s" % (s["title"], SITE_NAME), s["contexto"] or s["title"],
+               canonical, root, og_image=og_abs(ed),
                jsonld='<script type="application/ld+json">%s</script>' % jsonld)
     doc += cabecera(root)
-    doc += """<main class="wrap"><article class="article" style="padding:36px 0 10px">
+    doc += """<div class="progress" id="progress"></div>
+<main class="wrap"><article class="article">
 <div class="breadcrumb"><a href="{root}index.html">Inicio</a> / <a href="{root}edicion/{eslug}.html">{edicion}</a></div>
-<span class="tag" style="color:var(--terra);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">{genero}</span>
+<span class="genre" style="color:var(--terra);font-size:var(--fs-small);font-weight:700">{genero}</span>
 <h1>{titulo}</h1>
 <div class="meta"><span>{fuente}</span><span>·</span><span>{fecha}</span><span>·</span><span>{ambito}</span></div>
 <p class="lede">{resumen}</p>
+{share}
 {body_block}
 {fuente_box}
 {video}
@@ -422,8 +507,7 @@ def generar_noticia(ed, s, eds):
         root=root, eslug=ed["slug"], edicion=esc(ed["edicion"].capitalize()),
         genero=esc(s["genero"]), titulo=esc(s["title"]), fuente=esc(s["source"]),
         fecha=esc(fecha_larga(ed["dt"])), ambito=esc(s["ambito"]),
-        resumen=esc(lede),
-        body_block=body_block,
+        resumen=esc(lede), share=share, body_block=body_block,
         fuente_box=fuente, video=video, mas=mas)
     doc += pie(root)
     return doc
@@ -431,7 +515,7 @@ def generar_noticia(ed, s, eds):
 
 def generar_pagina(titulo, desc, slug, contenido):
     root = ""
-    doc = head("%s — Olfatecho" % titulo, desc, "%s/%s.html" % (BASE_URL, slug), root)
+    doc = head("%s — %s" % (titulo, SITE_NAME), desc, "%s/%s.html" % (BASE_URL, slug), root)
     doc += cabecera(root)
     doc += '<main class="wrap"><div class="page">%s</div></main>' % contenido
     doc += pie(root)
@@ -458,8 +542,11 @@ def privacidad():
 <p>Olfatecho Noticias es un sitio informativo. Esta política explica qué datos se usan cuando visitas la web o ves nuestros videos.</p>
 <h2>Datos que recopilamos</h2>
 <p>No pedimos registro ni datos personales para leer las noticias. El sitio es estático y no tiene formularios de usuario.</p>
-<h2>Cookies y terceros</h2>
-<p>Los videos se muestran con el reproductor de YouTube (modo privacidad mejorada). YouTube y Google pueden usar cookies propias según sus políticas. No controlamos esas cookies.</p>
+<h2>Cookies y publicidad</h2>
+<p>Usamos cookies propias y de terceros para mostrar anuncios y medir el tráfico. El proveedor de publicidad es <strong>Google AdSense</strong>, que puede usar cookies para mostrarte anuncios según tus visitas a este y otros sitios. Puedes aceptar o rechazar estas cookies en el aviso que aparece al entrar; si rechazas, no cargamos el script de publicidad.</p>
+<p>Más información: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Cómo usa Google las cookies en publicidad</a>.</p>
+<h2>Videos</h2>
+<p>Los videos se muestran con el reproductor de YouTube (modo privacidad mejorada). YouTube y Google pueden usar cookies propias según sus políticas.</p>
 <h2>Enlaces a otros medios</h2>
 <p>Cada noticia enlaza al artículo original de su medio. Al hacer clic saldrás de Olfatecho y se aplicarán las políticas del sitio de destino.</p>
 <h2>Contacto</h2>
@@ -482,13 +569,12 @@ def rss(eds):
         link = "%s/edicion/%s.html" % (BASE_URL, e["slug"])
         desc = e["stories"][0]["contexto"] if e["stories"] else ""
         items += """<item><title>%s</title><link>%s</link><guid>%s</guid><pubDate>%s</pubDate><description>%s</description></item>""" % (
-            esc(e["titulo"]), esc(link), esc(link),
-            e["dt"].strftime("%a, %d %b %Y %H:%M:%S -0500"),
-            esc(desc))
+            esc(e["titulo_web"]), esc(link), esc(link),
+            e["dt"].strftime("%a, %d %b %Y %H:%M:%S -0500"), esc(desc))
     return """<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>Olfatecho Noticias</title><link>%s/</link>
+<rss version="2.0"><channel><title>%s</title><link>%s/</link>
 <description>Noticias del Perú y el mundo en ediciones cortas.</description><language>es-PE</language>
-%s</channel></rss>""" % (BASE_URL, items)
+%s</channel></rss>""" % (SITE_NAME, BASE_URL, items)
 
 
 def main():
@@ -511,16 +597,24 @@ def main():
     eds = cargar_ediciones()
     if os.path.isdir(SALIDA):
         shutil.rmtree(SALIDA)
-    os.makedirs(os.path.join(SALIDA, "edicion"), exist_ok=True)
-    os.makedirs(os.path.join(SALIDA, "noticia"), exist_ok=True)
-    os.makedirs(os.path.join(SALIDA, "assets"), exist_ok=True)
+    for sub in ("edicion", "noticia", "assets"):
+        os.makedirs(os.path.join(SALIDA, sub), exist_ok=True)
 
     shutil.copyfile(os.path.join(AQUI, "assets", "style.css"),
                     os.path.join(SALIDA, "assets", "style.css"))
+    shutil.copyfile(os.path.join(AQUI, "assets", "app.js"),
+                    os.path.join(SALIDA, "assets", "app.js"))
     for extra in ("logo.png", "favicon.png", "logo-512.png", "og-default.jpg"):
         src = os.path.join(AQUI, "assets", extra)
         if os.path.isfile(src):
             shutil.copyfile(src, os.path.join(SALIDA, "assets", extra))
+
+    os.makedirs(os.path.join(SALIDA, "assets", "ediciones"), exist_ok=True)
+    for ed in eds:
+        if ed.get("img_src") and os.path.isfile(ed["img_src"]):
+            dst = os.path.join(SALIDA, "assets", "ediciones", ed["slug"] + ".jpg")
+            if preparar_imagen(ed["img_src"], dst):
+                ed["img"] = "assets/ediciones/%s.jpg" % ed["slug"]
 
     open(os.path.join(SALIDA, "index.html"), "w", encoding="utf-8").write(generar_inicio(eds))
     for ed in eds:
@@ -540,12 +634,17 @@ def main():
     open(os.path.join(SALIDA, "robots.txt"), "w", encoding="utf-8").write(
         "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n" % BASE_URL)
     open(os.path.join(SALIDA, "404.html"), "w", encoding="utf-8").write(
-        generar_pagina("Página no encontrada",
-                       "La página que buscas no existe.",
-                       "404",
+        generar_pagina("Página no encontrada", "La página que buscas no existe.", "404",
                        '<h1>Página no encontrada</h1>'
                        '<p>La página que buscas no existe o cambió de dirección.</p>'
                        '<p><a class="btn" href="index.html">Volver al inicio →</a></p>'))
+    if ADSENSE_CLIENT:
+        pub = ADSENSE_CLIENT.replace("ca-", "")
+        open(os.path.join(SALIDA, "ads.txt"), "w", encoding="utf-8").write(
+            "google.com, %s, DIRECT, f08c47fec0942fa0\n" % pub)
+    else:
+        open(os.path.join(SALIDA, "ads.txt"), "w", encoding="utf-8").write(
+            "# ads.txt: agrega tu linea de AdSense (google.com, pub-XXXX, DIRECT, f08c47fec0942fa0)\n")
     dom = dominio_actual()
     if dom:
         open(os.path.join(SALIDA, "CNAME"), "w", encoding="utf-8").write(dom + "\n")

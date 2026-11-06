@@ -1,0 +1,1601 @@
+{
+ "url": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\docs\\index.html",
+ "at": "2026-11-06T06:04:55.248Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.49,
+    0.69,
+    0.58,
+    0.26,
+    0.23,
+    0.53
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 5352,
+     "screens": 5.9,
+     "words": 900,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "chars": 20,
+     "lines": 2,
+     "size": 80,
+     "vw": 5.6,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.39,
+     "top": 174,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "lines": 2,
+     "size": 80,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "El día en 2 minutos.",
+      "words": 5,
+      "chars": 20,
+      "lines": 2,
+      "size": 80,
+      "vw": 5.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 174,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 781,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 2444,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.29,
+      "top": 2478,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.22,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      22,
+      24,
+      46,
+      80
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 71,
+     "max": {
+      "size": 80,
+      "vw": 5.6,
+      "font": "Georgia",
+      "text": "El día en 2 minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#17130f",
+       "top": 5011,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →",
+      "Aceptar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 858
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.15
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 5352,
+    "margins": {
+     "left": 164,
+     "right": 164
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 120,
+      "height": 530,
+      "words": 69,
+      "media": 1,
+      "middle": 47,
+      "heading": {
+       "text": "El día en 2 minutos.",
+       "size": 80,
+       "tag": "h1"
+      },
+      "left": 164,
+      "right": 161,
+      "textLeft": 164,
+      "textRight": 720,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 723,
+      "height": 1662,
+      "words": 154,
+      "media": 12,
+      "middle": 26,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 164,
+      "right": 164,
+      "textLeft": 164,
+      "textRight": 164,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 2386,
+      "height": 2561,
+      "words": 606,
+      "media": 0,
+      "middle": 83,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 164,
+      "right": 208,
+      "textLeft": 164,
+      "textRight": 208,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 5011,
+      "height": 341,
+      "words": 44,
+      "media": 0,
+      "middle": 265,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 164,
+      "right": 164,
+      "textLeft": 164,
+      "textRight": 164,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "El día en 2 minutos.",
+      "size": 80,
+      "top": 174,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 164,
+      "n": 22
+     },
+     {
+      "x": 184,
+      "n": 4
+     },
+     {
+      "x": 563,
+      "n": 4
+     },
+     {
+      "x": 943,
+      "n": 4
+     },
+     {
+      "x": 831,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.07,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 120,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.81,
+    0.78,
+    0.85,
+    0.59,
+    0.43,
+    0.63,
+    0.78
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6708,
+     "screens": 6.6,
+     "words": 897,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "chars": 20,
+     "lines": 1,
+     "size": 50.7,
+     "vw": 6.6,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.94,
+     "top": 164,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "lines": 1,
+     "size": 50.7,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "El día en 2 minutos.",
+      "words": 5,
+      "chars": 20,
+      "lines": 1,
+      "size": 50.7,
+      "vw": 6.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 164,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1172,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 3519,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 5781,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.22,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      19,
+      24,
+      30,
+      51
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 87,
+     "max": {
+      "size": 50.7,
+      "vw": 6.6,
+      "font": "Georgia",
+      "text": "El día en 2 minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#111111",
+       "top": 483,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0.07
+       }
+      },
+      {
+       "color": "#17130f",
+       "top": 6106,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1231
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.5
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": false,
+     "height": 72,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6708,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 110,
+      "height": 931,
+      "words": 69,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "El día en 2 minutos.",
+       "size": 51,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 24,
+      "textRight": 191,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 1114,
+      "height": 2346,
+      "words": 154,
+      "media": 12,
+      "middle": 26,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 3461,
+      "height": 2582,
+      "words": 606,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 26,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 6106,
+      "height": 602,
+      "words": 44,
+      "media": 0,
+      "middle": 322,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "El día en 2 minutos.",
+      "size": 51,
+      "top": 164,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 22
+     },
+     {
+      "x": 44,
+      "n": 6
+     },
+     {
+      "x": 417,
+      "n": 6
+     },
+     {
+      "x": 58,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.75,
+    0.75,
+    0.86,
+    0.79,
+    0.85,
+    0.91,
+    0.69,
+    0.59,
+    0.57,
+    0.63,
+    0.63,
+    0.85
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 9904,
+     "screens": 11.7,
+     "words": 897,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "chars": 20,
+     "lines": 2,
+     "size": 42,
+     "vw": 10.8,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "El día en 2 minutos.",
+     "words": 5,
+     "lines": 2,
+     "size": 42,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "El día en 2 minutos.",
+      "words": 5,
+      "chars": 20,
+      "lines": 2,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "▶",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Segoe UI",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 614,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 1088,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 5599,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 8868,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.22,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      19,
+      21,
+      24,
+      30,
+      42
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "text": "El día en 2 minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffaf2",
+       "top": 1180,
+       "hsl": {
+        "h": 37,
+        "s": 1,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#17130f",
+       "top": 8834,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1180
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.24
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": false,
+     "height": 72,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 9904,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 106,
+      "height": 782,
+      "words": 69,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "El día en 2 minutos.",
+       "size": 42,
+       "tag": "h1"
+      },
+      "left": 22,
+      "right": 22,
+      "textLeft": 24,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div#cookie-banner.cookie",
+      "tag": "div",
+      "top": 888,
+      "height": 155,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 42,
+      "right": 60,
+      "textLeft": 42,
+      "textRight": 60,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 1044,
+      "height": 4511,
+      "words": 154,
+      "media": 12,
+      "middle": 0,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 5555,
+      "height": 3646,
+      "words": 606,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 25,
+      "textLeft": 24,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 9265,
+      "height": 639,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 24,
+      "right": 52,
+      "textLeft": 24,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "El día en 2 minutos.",
+      "size": 42,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 22
+     },
+     {
+      "x": 44,
+      "n": 12
+     },
+     {
+      "x": 58,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #f7f2e9).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\desktop-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\tablet-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\mobile-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after5\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

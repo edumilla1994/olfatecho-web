@@ -1,0 +1,1 @@
+﻿# adsense.txt de ejemplo (el cliente real se pone aqui)

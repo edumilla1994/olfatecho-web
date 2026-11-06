@@ -1,0 +1,1619 @@
+{
+ "url": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\docs\\index.html",
+ "at": "2026-11-06T06:00:32.511Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.58,
+    0.67,
+    0.63,
+    0.37,
+    0.34,
+    0.57
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 5360,
+     "screens": 6,
+     "words": 903,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "chars": 37,
+     "lines": 3,
+     "size": 80,
+     "vw": 5.6,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.39,
+     "top": 174,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "lines": 3,
+     "size": 80,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "words": 7,
+      "chars": 37,
+      "lines": 3,
+      "size": 80,
+      "vw": 5.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 174,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 789,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 2452,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 46,
+      "vw": 3.2,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.29,
+      "top": 2486,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.23,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      22,
+      24,
+      46,
+      80
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 71,
+     "max": {
+      "size": 80,
+      "vw": 5.6,
+      "font": "Georgia",
+      "text": "Las noticias del día, en dos minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#17130f",
+       "top": 5019,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →",
+      "Aceptar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 1,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 15,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 866
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.15
+     }
+    ],
+    "nav": {
+     "links": 5,
+     "fixed": true,
+     "height": 82,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 5360,
+    "margins": {
+     "left": 164,
+     "right": 164
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 120,
+      "height": 611,
+      "words": 71,
+      "media": 1,
+      "middle": 45,
+      "heading": {
+       "text": "Las noticias del día, en dos minutos.",
+       "size": 80,
+       "tag": "h1"
+      },
+      "left": 164,
+      "right": 161,
+      "textLeft": 164,
+      "textRight": 718,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 731,
+      "height": 1662,
+      "words": 154,
+      "media": 12,
+      "middle": 26,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 164,
+      "right": 164,
+      "textLeft": 164,
+      "textRight": 164,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 2394,
+      "height": 2561,
+      "words": 606,
+      "media": 0,
+      "middle": 83,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 164,
+      "right": 208,
+      "textLeft": 164,
+      "textRight": 208,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 5019,
+      "height": 341,
+      "words": 45,
+      "media": 0,
+      "middle": 265,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 164,
+      "right": 164,
+      "textLeft": 164,
+      "textRight": 164,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "size": 80,
+      "top": 174,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 164,
+      "n": 22
+     },
+     {
+      "x": 184,
+      "n": 4
+     },
+     {
+      "x": 563,
+      "n": 4
+     },
+     {
+      "x": 943,
+      "n": 4
+     },
+     {
+      "x": 831,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.07,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 120,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.73,
+    0.8,
+    0.86,
+    0.53,
+    0.55,
+    0.56,
+    0.85
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6686,
+     "screens": 6.5,
+     "words": 900,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "☰"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "chars": 37,
+     "lines": 2,
+     "size": 50.7,
+     "vw": 6.6,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.94,
+     "top": 164,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "lines": 2,
+     "size": 50.7,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "words": 7,
+      "chars": 37,
+      "lines": 2,
+      "size": 50.7,
+      "vw": 6.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 164,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1151,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 3497,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 5759,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.23,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      19,
+      24,
+      30,
+      51
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 87,
+     "max": {
+      "size": 50.7,
+      "vw": 6.6,
+      "font": "Georgia",
+      "text": "Las noticias del día, en dos minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#111111",
+       "top": 535,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0.07
+       }
+      },
+      {
+       "color": "#17130f",
+       "top": 6084,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →",
+      "Aceptar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 1,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 15,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1210
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.46
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6686,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 110,
+      "height": 983,
+      "words": 71,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Las noticias del día, en dos minutos.",
+       "size": 51,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 24,
+      "textRight": 84,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 1093,
+      "height": 2346,
+      "words": 154,
+      "media": 12,
+      "middle": 26,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 3439,
+      "height": 2582,
+      "words": 606,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 26,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 6084,
+      "height": 602,
+      "words": 45,
+      "media": 0,
+      "middle": 307,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "size": 51,
+      "top": 164,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 22
+     },
+     {
+      "x": 44,
+      "n": 6
+     },
+     {
+      "x": 417,
+      "n": 6
+     },
+     {
+      "x": 58,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.7,
+    0.81,
+    0.86,
+    0.92,
+    0.86,
+    0.91,
+    0.76,
+    0.7,
+    0.68,
+    0.73,
+    0.74,
+    0.86
+   ],
+   "motion": {
+    "elements": 24,
+    "css": 2,
+    "transitions": 22,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 9791,
+     "screens": 11.6,
+     "words": 900,
+     "img": 14,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "2026-11-06-segunda-edicion.jpg",
+      "2026-11-06-primera-edicion.jpg",
+      "2026-11-05-primera-edicion.jpg",
+      "2026-11-03-tercera-edicion.jpg",
+      "2026-11-03-segunda-edicion.jpg",
+      "2026-11-03-primera-edicion.jpg",
+      "2026-11-02-decima-segunda-edicion.jpg",
+      "2026-11-02-decima-primera-edicion.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "☰"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "chars": 37,
+     "lines": 3,
+     "size": 42,
+     "vw": 10.8,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Las noticias del día, en dos minutos.",
+     "words": 7,
+     "lines": 3,
+     "size": 42,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "words": 7,
+      "chars": 37,
+      "lines": 3,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "▶",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Segoe UI",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 657,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ediciones recientes",
+      "words": 2,
+      "chars": 19,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 975,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Últimas noticias",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.015,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 5486,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "La noticia, completa",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 8755,
+      "tag": "h3",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Segoe UI",
+       "share": 0.77,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.23,
+       "mono": false
+      },
+      {
+       "family": "Arial",
+       "share": 0,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      15,
+      17,
+      19,
+      21,
+      24,
+      30,
+      42
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Segoe UI",
+      "size": 16.5,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 16.6
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "text": "Las noticias del día, en dos minutos."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f7f2e9",
+     "bodyBgHsl": {
+      "h": 39,
+      "s": 0.47,
+      "l": 0.94
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffaf2",
+       "top": 1067,
+       "hsl": {
+        "h": 37,
+        "s": 1,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#17130f",
+       "top": 8721,
+       "hsl": {
+        "h": 30,
+        "s": 0.21,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#17130f",
+       "share": 0.73
+      },
+      {
+       "color": "#5c534a",
+       "share": 0.11
+      },
+      {
+       "color": "#c9bfb2",
+       "share": 0.07
+      },
+      {
+       "color": "#8a5a00",
+       "share": 0.05
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#17130f",
+      "hsl": {
+       "h": 30,
+       "s": 0.21,
+       "l": 0.07
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver la edición completa →",
+      "Aceptar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 1,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 15,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 13,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 12,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1067
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.2
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 9791,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 106,
+      "height": 825,
+      "words": 71,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Las noticias del día, en dos minutos.",
+       "size": 42,
+       "tag": "h1"
+      },
+      "left": 22,
+      "right": 22,
+      "textLeft": 24,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#ediciones.section",
+      "tag": "section",
+      "top": 931,
+      "height": 4511,
+      "words": 154,
+      "media": 12,
+      "middle": 0,
+      "heading": {
+       "text": "Ediciones recientes",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.section",
+      "tag": "section",
+      "top": 5442,
+      "height": 3646,
+      "words": 606,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Últimas noticias",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 25,
+      "textLeft": 24,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 9153,
+      "height": 639,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Olfatecho",
+       "size": 15,
+       "tag": "h4"
+      },
+      "left": 24,
+      "right": 52,
+      "textLeft": 24,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Las noticias del día, en dos minutos.",
+      "size": 42,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 22
+     },
+     {
+      "x": 44,
+      "n": 12
+     },
+     {
+      "x": 58,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 36,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"Las noticias del día, en dos minutos.\" → 3 lines (7 words, 80px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #f7f2e9).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"Ediciones recientes\" (screen 1, 75% hidden); \"La noticia, completa\" (screen 3, 25% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground."
+  },
+  {
+   "level": "FAIL",
+   "id": "emoji",
+   "width": 768,
+   "message": "Emoji in the page: ☰",
+   "fix": "Remove. Use words or real imagery.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Las noticias del día, en dos minutos.\" → 3 lines (7 words, 42px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\desktop-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\tablet-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\mobile-page-01.jpg",
+    "C:\\Users\\edumi\\OneDrive\\Desktop\\Devue\\PEnt\\users\\Code\\olfatecho-web\\.taste-skill\\after2\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
