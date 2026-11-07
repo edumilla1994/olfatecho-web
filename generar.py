@@ -290,7 +290,10 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
     if ADSENSE_CLIENT:
         ads = ('<meta name="google-adsense-account" content="%s">\n'
                '<script>window.ADSENSE_CLIENT="%s";</script>\n'
-               % (esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT)))
+               '<script async id="adsbygoogle-js" crossorigin="anonymous" '
+               'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s">'
+               '</script>\n'
+               % (esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT)))
     extra = ""
     if GSC_TOKEN:
         extra += ('<meta name="google-site-verification" content="%s">\n'

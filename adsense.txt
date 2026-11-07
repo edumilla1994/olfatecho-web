@@ -1,1 +1,1 @@
-﻿# AdSense: pega tu ID ca-pub-XXXXXXXXXXXXXXXX en la primera linea
+﻿ca-pub-5146620414215248

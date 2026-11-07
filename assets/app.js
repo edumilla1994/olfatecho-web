@@ -54,20 +54,31 @@
   var KEY = "olfatecho_consent";
   var banner = document.getElementById("cookie-banner");
 
+  function pushAdUnits() {
+    document.querySelectorAll("ins.adsbygoogle").forEach(function (el) {
+      if (el.getAttribute("data-adsbygoogle-status")) return;
+      try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+    });
+  }
+
   function loadAds() {
     var c = window.ADSENSE_CLIENT;
-    if (!c || document.getElementById("adsbygoogle-js")) return;
+    if (!c) return;
+    // El script ya va en el <head> (necesario para verificar el sitio).
+    // Aqui solo pedimos los anuncios cuando el usuario acepta.
+    var previo = document.getElementById("adsbygoogle-js");
+    if (previo) {
+      if (window.adsbygoogle) pushAdUnits();
+      else previo.addEventListener("load", pushAdUnits);
+      return;
+    }
     var s = document.createElement("script");
     s.id = "adsbygoogle-js";
     s.async = true;
     s.crossOrigin = "anonymous";
     s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
       encodeURIComponent(c);
-    s.addEventListener("load", function () {
-      document.querySelectorAll("ins.adsbygoogle").forEach(function () {
-        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
-      });
-    });
+    s.addEventListener("load", pushAdUnits);
     document.head.appendChild(s);
   }
 
