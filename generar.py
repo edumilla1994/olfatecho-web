@@ -44,6 +44,7 @@ def _adsense_client():
     try:
         if os.path.isfile(p):
             v = open(p, encoding="utf-8").read().strip().splitlines()[0].strip()
+            v = v.lstrip("\ufeff").strip()
             if v.startswith("ca-pub-"):
                 return v
     except OSError:
@@ -60,7 +61,7 @@ def _lineas_config(nombre):
     try:
         if os.path.isfile(p):
             for ln in open(p, encoding="utf-8"):
-                ln = ln.strip()
+                ln = ln.strip().lstrip("\ufeff").strip()
                 if ln and not ln.startswith("#"):
                     out.append(ln)
     except OSError:

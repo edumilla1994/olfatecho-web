@@ -1,1 +1,1 @@
-# ads.txt: agrega tu linea de AdSense (google.com, pub-XXXX, DIRECT, f08c47fec0942fa0)
+google.com, pub-5146620414215248, DIRECT, f08c47fec0942fa0
