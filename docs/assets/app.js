@@ -63,12 +63,32 @@
     s.crossOrigin = "anonymous";
     s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
       encodeURIComponent(c);
+    s.addEventListener("load", function () {
+      document.querySelectorAll("ins.adsbygoogle").forEach(function () {
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+      });
+    });
     document.head.appendChild(s);
+  }
+
+  function loadGA() {
+    var id = window.GA4_ID;
+    if (!id || document.getElementById("ga4-js")) return;
+    var s = document.createElement("script");
+    s.id = "ga4-js";
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", id);
   }
 
   function apply(v) {
     if (v === "ads") {
       loadAds();
+      loadGA();
     }
   }
 

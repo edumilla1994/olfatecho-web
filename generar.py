@@ -54,6 +54,41 @@ def _adsense_client():
 ADSENSE_CLIENT = _adsense_client()
 
 
+def _lineas_config(nombre):
+    p = os.path.join(AQUI, nombre)
+    out = []
+    try:
+        if os.path.isfile(p):
+            for ln in open(p, encoding="utf-8"):
+                ln = ln.strip()
+                if ln and not ln.startswith("#"):
+                    out.append(ln)
+    except OSError:
+        pass
+    return out
+
+
+ADSENSE_SLOTS = {}
+for _ln in _lineas_config("adsense_slots.txt"):
+    if "=" in _ln:
+        _k, _v = _ln.split("=", 1)
+        ADSENSE_SLOTS[_k.strip()] = _v.strip()
+GA4_ID = (_lineas_config("ga4.txt") or [""])[0].strip()
+GSC_TOKEN = (_lineas_config("google_site_verification.txt") or [""])[0].strip()
+
+
+def ad_slot(key):
+    """Banner manual de AdSense (solo si hay cliente y slot configurados)."""
+    slot = ADSENSE_SLOTS.get(key, "")
+    if not (ADSENSE_CLIENT and slot):
+        return ""
+    return ('<div class="ad-slot"><span class="ad-label">Publicidad</span>'
+            '<ins class="adsbygoogle" style="display:block" '
+            'data-ad-client="%s" data-ad-slot="%s" data-ad-format="auto" '
+            'data-full-width-responsive="true"></ins></div>'
+            % (esc(ADSENSE_CLIENT), esc(slot)))
+
+
 def esc(s):
     return html.escape(str(s or ""), quote=True)
 
@@ -256,6 +291,12 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
         ads = ('<meta name="google-adsense-account" content="%s">\n'
                '<script>window.ADSENSE_CLIENT="%s";</script>\n'
                % (esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT)))
+    extra = ""
+    if GSC_TOKEN:
+        extra += ('<meta name="google-site-verification" content="%s">\n'
+                  % esc(GSC_TOKEN))
+    if GA4_ID:
+        extra += '<script>window.GA4_ID="%s";</script>\n' % esc(GA4_ID)
     return """<!doctype html>
 <html lang="es">
 <head>
@@ -275,11 +316,12 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
 <link rel="apple-touch-icon" href="{root}assets/logo.png">
 <meta name="theme-color" content="#b8431f">
 <link rel="stylesheet" href="{root}assets/style.css">
-{ads}{jsonld}
+{extra}{ads}{jsonld}
 </head>
 <body>
 """.format(titulo=esc(titulo), desc=esc(desc), canonical=esc(canonical),
-           site=esc(SITE_NAME), root=root, img=esc(img), ads=ads, jsonld=jsonld)
+           site=esc(SITE_NAME), root=root, img=esc(img), ads=ads,
+           extra=extra, jsonld=jsonld)
 
 
 def cabecera(root):
@@ -308,7 +350,7 @@ def pie(root):
     cookie = """<div class="cookie-wall" id="cookie-banner" hidden>
 <div class="cookie-card">
 <h2>Antes de seguir</h2>
-<p>Usamos cookies propias y de terceros (Google AdSense) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar; si rechazas, no cargamos publicidad.</p>
+<p>Usamos cookies propias y de terceros (Google AdSense y analítica) para mostrar anuncios y medir el tráfico. Puedes aceptar o rechazar; si rechazas, no cargamos publicidad ni analítica.</p>
 <div class="cookie-actions"><button class="no" id="cookie-no">Rechazar</button><button class="ok" id="cookie-ok">Aceptar</button></div>
 <p class="cookie-note"><a href="{root}privacidad.html">Política de privacidad</a></p>
 </div></div>""".format(root=root)
@@ -441,9 +483,11 @@ def generar_inicio(eds):
                jsonld='<script type="application/ld+json">%s</script>' % jsonld)
     doc += cabecera(root)
     doc += hero
+    doc += ad_slot("home_top")
     doc += """<section class="section" id="ediciones"><div class="wrap">
 <div class="section-head"><h2>Ediciones recientes</h2><a class="more-link" href="#ediciones">Una mirada rápida, todos los días</a></div>
 <div class="grid-3">%s</div></div></section>""" % grid
+    doc += ad_slot("home_mid")
     doc += """<section class="section"><div class="wrap"><div class="news-list">
 <div><div class="section-head"><h2>Últimas noticias</h2></div>%s</div>
 <div>%s</div>
@@ -495,12 +539,16 @@ def generar_edicion(ed, eds):
 <div class="edition-meta"><span>{edicion}</span><span>·</span><span>{fecha}</span><span>·</span><span>{n} noticias</span></div>
 </div>
 {video}
+{ad_top}
 <section class="section" style="padding-top:22px">{stories}</section>
+{ad_bottom}
 <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0 30px">{nav}</div>
 </main>""".format(root=root, titulo=esc(ed["titulo_web"] or "Olfatecho Noticias"),
                  edicion=esc(ed["edicion"].capitalize()),
                  fecha=esc(fecha_larga(ed["dt"])), n=len(ed["stories"]),
-                 video=video, stories=stories, nav=nav)
+                 video=video, stories=stories, nav=nav,
+                 ad_top=ad_slot("edition_top"),
+                 ad_bottom=ad_slot("edition_bottom"))
     doc += pie(root)
     return doc
 
@@ -556,16 +604,20 @@ def generar_noticia(ed, s, eds):
 <div class="meta"><span>{fuente}</span><span>·</span><span>{fecha}</span><span>·</span><span>{ambito}</span></div>
 <p class="lede">{resumen}</p>
 {share}
+{ad_top}
 {body_block}
 {fuente_box}
 {video}
+{ad_bottom}
 <div class="more"><h3>Más de esta edición</h3>{mas}</div>
 </article></main>""".format(
         root=root, eslug=ed["slug"], edicion=esc(ed["edicion"].capitalize()),
         genero=esc(s["genero"]), titulo=esc(s["title"]), fuente=esc(s["source"]),
         fecha=esc(fecha_larga(ed["dt"])), ambito=esc(s["ambito"]),
         resumen=esc(lede), share=share, body_block=body_block,
-        fuente_box=fuente, video=video, mas=mas)
+        fuente_box=fuente, video=video, mas=mas,
+        ad_top=ad_slot("story_top"),
+        ad_bottom=ad_slot("story_bottom"))
     doc += pie(root)
     return doc
 

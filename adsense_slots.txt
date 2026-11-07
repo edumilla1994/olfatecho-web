@@ -1,0 +1,7 @@
+﻿# Slots manuales de AdSense (crea las unidades en AdSense y pega el ID numerico)
+# home_top=0000000000
+# home_mid=0000000000
+# edition_top=0000000000
+# edition_bottom=0000000000
+# story_top=0000000000
+# story_bottom=0000000000

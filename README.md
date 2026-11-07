@@ -5,16 +5,17 @@ con el resumen de las noticias y el enlace al medio original.
 
 ## Estructura
 
-- `generar.py` — lee las ediciones subidas desde
+- `generar.py` — lee las ediciones desde
   `../noticiasdiarias/storage/noticias_diarias` y genera `docs/`.
-- `docs/` — sitio publicado en GitHub Pages
-  (`https://edumilla1994.github.io/olfatecho-web/`).
+- `docs/` — sitio publicado en GitHub Pages.
 - `publicar_web.py` — regenera y hace `git commit` + `git push` si hay cambios.
-- `publicar_web_oculto.vbs` — lanzador sin ventana (histórico).
-- `adsense.txt` — aquí va tu ID de AdSense (`ca-pub-...`).
-- `dominio.txt` — aquí va el dominio propio (`olfatecho.com`) cuando lo compres.
+- `dominio.txt` — dominio propio (`olfatecho.com`).
+- `adsense.txt` — ID de AdSense (`ca-pub-...`).
+- `adsense_slots.txt` — IDs de las unidades manuales (opcional).
+- `ga4.txt` — ID de Google Analytics 4 (`G-...`).
+- `google_site_verification.txt` — token de Search Console.
 
-## Uso manual
+## Uso
 
 ```powershell
 python generar.py
@@ -24,25 +25,46 @@ python publicar_web.py
 
 ## Automatización
 
-1. La tarea **Olfatecho WEB** ejecuta `publicar_web.py` cada 30 minutos.
-2. Además, `subir_youtube.py` (noticiasdiarias) dispara `publicar_web.py`
-   inmediatamente después de cada subida exitosa.
+1. Tarea **Olfatecho WEB** cada 30 minutos.
+2. `subir_youtube.py` dispara `publicar_web.py` al subir una edición.
 3. GitHub Actions despliega `docs/` en Pages.
+
+## Dominio (GoDaddy → GitHub Pages)
+
+En GoDaddy: **Mis productos → olfatecho.com → DNS**. Borra el aparcamiento por
+defecto y crea:
+
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| AAAA | @ | 2606:50c0:8000::153 |
+| AAAA | @ | 2606:50c0:8001::153 |
+| AAAA | @ | 2606:50c0:8002::153 |
+| AAAA | @ | 2606:50c0:8003::153 |
+| CNAME | www | edumilla1994.github.io |
+
+Luego en GitHub → Settings → Pages → Custom domain: `olfatecho.com` → Save →
+**Enforce HTTPS**. Después: `python generar.py --dominio olfatecho.com`.
 
 ## AdSense
 
-1. Crea la cuenta en <https://adsense.google.com>.
-2. Copia tu ID (`ca-pub-XXXXXXXXXXXXXXXX`) en la primera línea de `adsense.txt`.
-3. Ejecuta `python generar.py`: agrega el meta de AdSense y genera `ads.txt`.
-4. El script de AdSense **solo se carga si el visitante acepta** el aviso de
-   cookies; si rechaza, no se carga publicidad.
-5. En AdSense activa **Auto Ads** para que Google coloque los anuncios.
+1. Crea la cuenta en <https://adsense.google.com> y añade `olfatecho.com`.
+2. Pega tu ID en `adsense.txt` (`ca-pub-...`).
+3. Ejecuta `python generar.py`: añade el meta, el script (solo tras aceptar
+   cookies), `ads.txt` y los huecos de anuncios.
+4. Activa **Auto Ads** en AdSense.
+5. Para banners manuales, crea unidades en AdSense y pega sus IDs en
+   `adsense_slots.txt` (`home_top`, `home_mid`, `edition_top`,
+   `edition_bottom`, `story_top`, `story_bottom`).
 
-## Dominio propio
+## Google
 
-1. Compra el dominio y apunta el DNS a GitHub Pages (A/AAAA + CNAME `www`).
-2. `python generar.py --dominio tudominio.com` (crea `dominio.txt` y `docs/CNAME`).
-3. En GitHub → Settings → Pages → Custom domain, pon el dominio y activa HTTPS.
+- **Search Console**: verifica `olfatecho.com` (DNS TXT o el token en
+  `google_site_verification.txt`) y envía `https://olfatecho.com/sitemap.xml`.
+- **Analytics 4**: crea la propiedad y pega `G-...` en `ga4.txt`.
 
 ## Contenido
 
