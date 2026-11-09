@@ -159,16 +159,15 @@ def cargar_ediciones():
         carpeta = os.path.join(FUENTE, d)
         nj = os.path.join(carpeta, "noticias.json")
         yj = os.path.join(carpeta, "subir_youtube.json")
-        fin = os.path.join(carpeta, "final-es.mp4")
         if not os.path.isfile(nj):
             continue
-        # incluir tambien las ediciones con video listo aunque YouTube aun
-        # no las haya subido: la web no debe quedarse atras
-        if not os.path.isfile(yj) and not os.path.isfile(fin):
+        # solo ediciones que ya tienen video en YouTube: la web nunca
+        # muestra una edicion sin su video
+        if not os.path.isfile(yj):
             continue
         try:
             j = json.load(open(nj, encoding="utf-8"))
-            yt = json.load(open(yj, encoding="utf-8")) if os.path.isfile(yj) else {}
+            yt = json.load(open(yj, encoding="utf-8"))
         except Exception:
             continue
         noticias = [n for n in (j.get("noticias") or []) if n.get("title")]
@@ -184,6 +183,8 @@ def cargar_ediciones():
         ed_txt = (j.get("edicion") or "").strip() or "edición"
         slug = "%s-%s" % (dt.strftime("%Y-%m-%d"), slugify(ed_txt))
         vid = video_id(yt.get("url") or "")
+        if not vid:
+            continue
         titulo_yt = (yt.get("titulo") or "").strip()
         if not titulo_yt:
             titulo_yt = "Olfatecho Noticias — %s (%s)" % (fecha_larga(dt), ed_txt)
@@ -344,6 +345,7 @@ def cabecera(root):
   <a href="{root}index.html#ediciones">Ediciones</a>
   <a href="{root}nosotros.html">Nosotros</a>
   <a href="{root}apoyanos.html">Apóyanos</a>
+  <a href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">YouTube</a>
   <a href="{root}privacidad.html">Privacidad</a>
 </nav>
 </div></header>
@@ -401,8 +403,10 @@ def titular_edicion(ed):
 
 def tarjeta_edicion(ed, root, i=0):
     tit = titular_edicion(ed)
+    play = ('<span class="card-play" aria-hidden="true">▶</span>'
+            if ed.get("video") else "")
     return """<a class="card reveal" href="{root}edicion/{slug}.html" style="--d:{d}s">
-<div class="card-media"><img src="{img}" alt="{alt}" loading="lazy"></div>
+<div class="card-media"><img src="{img}" alt="{alt}" loading="lazy">{play}</div>
 <div class="card-body">
   <span class="card-genre">{edicion}</span>
   <h3>{titulo}</h3>
@@ -411,7 +415,7 @@ def tarjeta_edicion(ed, root, i=0):
         root=root, slug=ed["slug"], img=esc(img_url(ed, root)),
         alt=esc(tit), edicion=esc(ed["edicion"].capitalize()),
         titulo=esc(tit), fecha=esc(fecha_corta(ed["dt"])),
-        n=len(ed["stories"]), d=(i % 3) * 0.08)
+        n=len(ed["stories"]), d=(i % 3) * 0.08, play=play)
 
 
 def item_noticia(ed, s, root, i=0):
@@ -528,8 +532,12 @@ def generar_edicion(ed, eds):
 
     video = ""
     if ed["video"]:
-        video = """<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{titulo}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>""".format(
-            vid=ed["video"], titulo=esc(ed["titulo_web"]))
+        video = """<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{titulo}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-actions">
+<a class="btn" href="{url}" target="_blank" rel="noopener">▶ Abrir en YouTube</a>
+<a class="btn btn-ghost" href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">Suscríbete a Olfatecho</a>
+</div>""".format(vid=ed["video"], titulo=esc(ed["titulo_web"]),
+                 url=esc(ed["url"]))
 
     doc = head("%s — %s" % (ed["titulo_web"] or ed["edicion"], SITE_NAME),
                "Edición del %s con %d noticias del Perú y el mundo." % (fecha_larga(ed["dt"]), len(ed["stories"])),
@@ -569,7 +577,14 @@ def generar_noticia(ed, s, eds):
 </div>""".format(fuente=esc(s["source"]), link=esc(s["link"]))
     video = ""
     if ed["video"]:
-        video = """<p style="margin:22px 0"><a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver esta noticia en el video</a></p>""".format(url=esc(ed["url"]))
+        video = """<div class="video-cta">
+<div class="video-cta-copy"><strong>Esta noticia está en el video de hoy</strong>
+<span>Mira la edición completa, con las demás noticias y sus fuentes.</span></div>
+<div class="video-cta-actions">
+<a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver el video en YouTube</a>
+<a class="btn btn-ghost" href="{root}edicion/{eslug}.html">Ver la edición</a>
+<a class="btn btn-ghost" href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">Suscríbete</a>
+</div></div>""".format(url=esc(ed["url"]), root=root, eslug=ed["slug"])
 
     texto = (s["contexto"] or "").strip()
     titulo_plano = re.sub(r"\s+", " ", s["title"]).strip()
