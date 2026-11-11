@@ -292,9 +292,7 @@ def head(titulo, desc, canonical, root, og_image="", jsonld=""):
     if ADSENSE_CLIENT:
         ads = ('<meta name="google-adsense-account" content="%s">\n'
                '<script>window.ADSENSE_CLIENT="%s";</script>\n'
-               '<script async id="adsbygoogle-js" crossorigin="anonymous" '
-               'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s">'
-               '</script>\n'
+               '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%s" crossorigin="anonymous"></script>\n'
                % (esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT), esc(ADSENSE_CLIENT)))
     extra = ""
     if GSC_TOKEN:
@@ -577,14 +575,16 @@ def generar_noticia(ed, s, eds):
 </div>""".format(fuente=esc(s["source"]), link=esc(s["link"]))
     video = ""
     if ed["video"]:
-        video = """<div class="video-cta">
+        video = """<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{titulo}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-cta">
 <div class="video-cta-copy"><strong>Esta noticia está en el video de hoy</strong>
 <span>Mira la edición completa, con las demás noticias y sus fuentes.</span></div>
 <div class="video-cta-actions">
 <a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver el video en YouTube</a>
 <a class="btn btn-ghost" href="{root}edicion/{eslug}.html">Ver la edición</a>
 <a class="btn btn-ghost" href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">Suscríbete</a>
-</div></div>""".format(url=esc(ed["url"]), root=root, eslug=ed["slug"])
+</div></div>""".format(vid=ed["video"], titulo=esc(ed["titulo_web"]),
+                            url=esc(ed["url"]), root=root, eslug=ed["slug"])
 
     texto = (s["contexto"] or "").strip()
     titulo_plano = re.sub(r"\s+", " ", s["title"]).strip()

@@ -66,7 +66,7 @@
     if (!c) return;
     // El script ya va en el <head> (necesario para verificar el sitio).
     // Aqui solo pedimos los anuncios cuando el usuario acepta.
-    var previo = document.getElementById("adsbygoogle-js");
+    var previo = document.querySelector('script[src*="adsbygoogle.js"]');
     if (previo) {
       if (window.adsbygoogle) pushAdUnits();
       else previo.addEventListener("load", pushAdUnits);
