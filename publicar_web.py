@@ -23,12 +23,23 @@ def log(msg):
 
 
 def run(args):
+    kw = {}
+    if os.name == "nt":
+        kw["creationflags"] = getattr(subprocess, "CREATE_NO_WINDOW", 0)
     r = subprocess.run(args, cwd=AQUI, capture_output=True, text=True,
-                       encoding="utf-8", errors="replace")
+                       encoding="utf-8", errors="replace", **kw)
     return r.returncode, ((r.stdout or "") + (r.stderr or "")).strip()
 
 
 def main():
+    # 1) notas largas y parafraseadas para las noticias nuevas
+    base_noti = os.path.join(AQUI, "..", "noticiasdiarias")
+    paraf = os.path.join(base_noti, "parafrasear_notas.py")
+    if os.path.isfile(paraf):
+        rc, out = run([sys.executable, "-X", "utf8", paraf,
+                       "--solo-subidos", "--limite", "8"])
+        log("parafrasis: " + (out.splitlines()[-1] if out else "sin salida")[:300])
+
     rc, out = run([sys.executable, "-X", "utf8", "generar.py"])
     if rc != 0:
         log("ERROR generar: " + out[-900:])

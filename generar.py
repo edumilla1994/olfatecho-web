@@ -27,6 +27,8 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 FUENTE = os.path.normpath(os.path.join(
     AQUI, "..", "noticiasdiarias", "storage", "noticias_diarias"))
 SALIDA = os.path.join(AQUI, "docs")
+RESUMEN_DIR = os.path.normpath(os.path.join(
+    AQUI, "..", "noticiasdiarias", "storage", "horizontal"))
 BASE_URL = os.getenv("OLFATECHO_BASE",
                      "https://edumilla1994.github.io/olfatecho-web").rstrip("/")
 DOMINIO_FILE = os.path.join(AQUI, "dominio.txt")
@@ -196,6 +198,7 @@ def cargar_ediciones():
                 "source": (n.get("source") or "").strip(),
                 "link": (n.get("link") or "").strip(),
                 "contexto": resumen(n.get("contexto"), n.get("title")),
+                "cuerpo": (n.get("cuerpo") or "").strip(),
                 "genero": (n.get("genero") or "Actualidad").strip(),
                 "ambito": (n.get("ambito") or "Perú").strip(),
                 "published": (n.get("published") or "").strip(),
@@ -253,6 +256,57 @@ def cargar_ediciones():
     limite = datetime.now() - timedelta(days=DIAS_VENTANA)
     eds = [e for e in eds if e["dt"] >= limite]
     return eds
+
+
+def cargar_resumenes():
+    """Videos horizontales diarios subidos a YouTube (con miniatura y guion)."""
+    out = []
+    if not os.path.isdir(RESUMEN_DIR):
+        return out
+    for d in sorted(os.listdir(RESUMEN_DIR)):
+        carpeta = os.path.join(RESUMEN_DIR, d)
+        if not os.path.isdir(carpeta):
+            continue
+        yj = os.path.join(carpeta, "subir_youtube.json")
+        tj = os.path.join(carpeta, "titulo_descripcion.txt")
+        if not os.path.isfile(yj) or not os.path.isfile(tj):
+            continue
+        try:
+            yt = json.load(open(yj, encoding="utf-8"))
+        except Exception:
+            continue
+        vid = video_id(yt.get("url") or "")
+        if not vid:
+            continue
+        chapters = []
+        try:
+            for ln in open(tj, encoding="utf-8"):
+                m = re.match(r"^(\d{2}:\d{2})\s+(.+)$", ln.strip())
+                if m:
+                    chapters.append({"t": m.group(1), "title": m.group(2).strip()})
+        except OSError:
+            pass
+        guiones = {}
+        gj = os.path.join(carpeta, "guiones.json")
+        if os.path.isfile(gj):
+            try:
+                guiones = json.load(open(gj, encoding="utf-8"))
+            except Exception:
+                pass
+        mini = ""
+        for name in ("miniatura_youtube_a.jpg", "miniatura.jpg"):
+            p = os.path.join(carpeta, name)
+            if os.path.isfile(p):
+                mini = p
+                break
+        out.append({
+            "folder": d, "video": vid, "url": (yt.get("url") or "").strip(),
+            "titulo": (yt.get("titulo") or "Resumen diario").strip(),
+            "fecha": (yt.get("fecha") or "")[:10],
+            "chapters": chapters, "guiones": guiones, "miniatura": mini,
+        })
+    out.sort(key=lambda r: (r["fecha"], r["folder"]), reverse=True)
+    return out
 
 
 def thumb(ed):
@@ -341,6 +395,7 @@ def cabecera(root):
 <nav class="nav" id="nav">
   <a href="{root}index.html">Inicio</a>
   <a href="{root}index.html#ediciones">Ediciones</a>
+  <a href="{root}resumen-diario.html">Resumen diario</a>
   <a href="{root}nosotros.html">Nosotros</a>
   <a href="{root}apoyanos.html">Apóyanos</a>
   <a href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">YouTube</a>
@@ -429,7 +484,90 @@ def item_noticia(ed, s, root, i=0):
         d=(i % 3) * 0.08)
 
 
-def generar_inicio(eds):
+def seccion_resumen(resumenes, root):
+    if not resumenes:
+        return ""
+    r = resumenes[0]
+    fecha = r["guiones"].get("fecha") or r["fecha"]
+    return """<section class="section" id="resumen-diario"><div class="wrap">
+<div class="section-head"><h2>Resumen diario</h2><a class="more-link" href="{root}resumen-diario.html">Capítulos y transcripción →</a></div>
+<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{titulo}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="hero-actions" style="margin-top:14px">
+<a class="btn" href="{url}" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+<a class="btn btn-ghost" href="{root}resumen-diario.html">Ver capítulos y transcripción</a>
+<span class="hero-edition">Resumen completo · {fecha}</span>
+</div></div></section>""".format(
+        root=root, vid=r["video"], titulo=esc(r["titulo"]),
+        url=esc(r["url"]), fecha=esc(fecha))
+
+
+def generar_resumen_diario(resumenes):
+    root = ""
+    if not resumenes:
+        return generar_pagina(
+            "Resumen diario", "El resumen completo del día.",
+            "resumen-diario",
+            "<h1>Resumen diario</h1><p>Aún no hay un resumen diario "
+            "publicado. Vuelve más tarde.</p>")
+    r = resumenes[0]
+    fecha = r["guiones"].get("fecha") or r["fecha"]
+    caps = ""
+    for c in r["chapters"]:
+        caps += "<li><strong>%s</strong> %s</li>" % (
+            esc(c["t"]), esc(c["title"]))
+    if caps:
+        caps = '<h2>Capítulos</h2><ol class="chapters">%s</ol>' % caps
+    trans = ""
+    g = r["guiones"]
+    if g.get("historias"):
+        trans = '<h2>Transcripción del resumen</h2><div class="transcript">'
+        if g.get("intro"):
+            trans += "<p>%s</p>" % esc(g["intro"])
+        for h in g["historias"]:
+            trans += "<h3>%s</h3>" % esc(h.get("title") or "")
+            for p in re.split(r"\n\s*\n", h.get("guion") or ""):
+                if p.strip():
+                    trans += "<p>%s</p>" % esc(p.strip())
+            if h.get("source"):
+                trans += ('<p class="source-mini">Fuente: %s</p>'
+                          % esc(h["source"]))
+        trans += "</div>"
+    arch = ""
+    if len(resumenes) > 1:
+        items = "".join(
+            '<li><a href="%s" target="_blank" rel="noopener">%s</a> '
+            '<span>%s</span></li>' % (esc(x["url"]), esc(x["titulo"]),
+                                      esc(x["fecha"]))
+            for x in resumenes[1:12])
+        arch = ('<h2>Resúmenes anteriores</h2><ul class="archive">%s</ul>'
+                % items)
+    doc = head("Resumen diario — Olfatecho",
+               "El resumen completo del día en video, con capítulos y "
+               "transcripción.",
+               BASE_URL + "/resumen-diario.html", root,
+               og_image="https://i.ytimg.com/vi/%s/maxresdefault.jpg"
+                        % r["video"])
+    doc += cabecera(root)
+    doc += """<main class="wrap"><div class="page">
+<span class="genre">Resumen diario</span>
+<h1>Las noticias del día, completas</h1>
+<div class="meta" style="color:var(--muted);font-size:var(--fs-small);padding:0 0 18px">%s · Olfatecho Noticias</div>
+<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/%s" title="%s" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video-actions">
+<a class="btn" href="%s" target="_blank" rel="noopener">▶ Abrir en YouTube</a>
+<a class="btn btn-ghost" href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">Suscríbete a Olfatecho</a>
+</div>
+%s
+%s
+%s
+<p style="margin-top:34px"><a class="btn btn-ghost" href="index.html">← Volver al inicio</a></p>
+</div></main>""" % (esc(fecha), r["video"], esc(r["titulo"]), esc(r["url"]),
+                     caps, trans, arch)
+    doc += pie(root)
+    return doc
+
+
+def generar_inicio(eds, resumenes=None):
     root = ""
     if not eds:
         doc = head(SITE_NAME, "Noticias del Perú y el mundo.", BASE_URL + "/", root)
@@ -490,6 +628,7 @@ def generar_inicio(eds):
     doc += cabecera(root)
     doc += hero
     doc += ad_slot("home_top")
+    doc += seccion_resumen(resumenes or [], root)
     doc += """<section class="section" id="ediciones"><div class="wrap">
 <div class="section-head"><h2>Ediciones recientes</h2><a class="more-link" href="#ediciones">Una mirada rápida, todos los días</a></div>
 <div class="grid-3">%s</div></div></section>""" % grid
@@ -593,7 +732,16 @@ def generar_noticia(ed, s, eds):
     partes = re.split(r"(?<=[.!?])\s+", texto.strip()) if texto else []
     lede = partes[0] if partes else (s["contexto"] or s["title"])
     cuerpo = " ".join(partes[1:]).strip() if len(partes) > 1 else ""
-    body_block = ('<div class="body"><p>%s</p></div>' % esc(cuerpo)) if cuerpo else ""
+    largo = (s.get("cuerpo") or "").strip()
+    if largo:
+        parrafos = [x.strip() for x in re.split(r"\n\s*\n", largo) if x.strip()]
+        if len(parrafos) < 2:
+            parrafos = [x.strip() for x in largo.split("\n") if x.strip()]
+        body_block = ('<div class="body">' +
+                      "".join("<p>%s</p>" % esc(x) for x in parrafos) +
+                      "</div>") if parrafos else ""
+    else:
+        body_block = ('<div class="body"><p>%s</p></div>' % esc(cuerpo)) if cuerpo else ""
 
     canonical = "%s/noticia/%s.html" % (BASE_URL, s["slug"])
     share = """<div class="share">
@@ -698,9 +846,10 @@ def privacidad():
 <p>Para consultas sobre privacidad escribe a <a href="mailto:%s">%s</a>.</p>""" % (fecha_larga(datetime.now()), EMAIL, EMAIL)
 
 
-def sitemap(eds):
+def sitemap(eds, resumenes=None):
     urls = [BASE_URL + "/", BASE_URL + "/nosotros.html",
-            BASE_URL + "/apoyanos.html", BASE_URL + "/privacidad.html"]
+            BASE_URL + "/apoyanos.html", BASE_URL + "/privacidad.html",
+            BASE_URL + "/resumen-diario.html"]
     for e in eds:
         urls.append("%s/edicion/%s.html" % (BASE_URL, e["slug"]))
         for s in e["stories"]:
@@ -741,6 +890,7 @@ def main():
             BASE_URL = "https://" + dom
 
     eds = cargar_ediciones()
+    resumenes = cargar_resumenes()
     if os.path.isdir(SALIDA):
         shutil.rmtree(SALIDA)
     for sub in ("edicion", "noticia", "assets"):
@@ -763,7 +913,7 @@ def main():
             if preparar_imagen(ed["img_src"], dst):
                 ed["img"] = "assets/ediciones/%s.jpg" % ed["slug"]
 
-    open(os.path.join(SALIDA, "index.html"), "w", encoding="utf-8").write(generar_inicio(eds))
+    open(os.path.join(SALIDA, "index.html"), "w", encoding="utf-8").write(generar_inicio(eds, resumenes))
     for ed in eds:
         open(os.path.join(SALIDA, "edicion", ed["slug"] + ".html"), "w",
              encoding="utf-8").write(generar_edicion(ed, eds))
@@ -779,7 +929,9 @@ def main():
     open(os.path.join(SALIDA, "privacidad.html"), "w", encoding="utf-8").write(
         generar_pagina("Privacidad", "Política de privacidad de Olfatecho Noticias.",
                        "privacidad", privacidad()))
-    open(os.path.join(SALIDA, "sitemap.xml"), "w", encoding="utf-8").write(sitemap(eds))
+    open(os.path.join(SALIDA, "resumen-diario.html"), "w",
+         encoding="utf-8").write(generar_resumen_diario(resumenes))
+    open(os.path.join(SALIDA, "sitemap.xml"), "w", encoding="utf-8").write(sitemap(eds, resumenes))
     open(os.path.join(SALIDA, "rss.xml"), "w", encoding="utf-8").write(rss(eds))
     open(os.path.join(SALIDA, "robots.txt"), "w", encoding="utf-8").write(
         "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n" % BASE_URL)

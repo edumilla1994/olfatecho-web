@@ -193,3 +193,12 @@ body.cookie-lock{overflow:hidden}
 .video-cta strong{display:block;font-size:16px}
 .video-cta span{display:block;color:var(--muted);font-size:var(--fs-small);margin-top:4px;max-width:46ch}
 .video-cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.chapters{margin:14px 0 0;padding-left:22px;color:var(--ink);line-height:1.8}
+.archive{list-style:none;padding:0;margin:14px 0 0}
+.archive li{padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.archive li a{font-weight:700;color:var(--terra)}
+.archive li span{color:var(--muted);font-size:var(--fs-small)}
+.transcript h3{font-family:var(--serif);font-size:22px;margin:26px 0 8px}
+.transcript p{font-size:var(--fs-body);line-height:1.75;margin:0 0 14px}
+.source-mini{font-size:var(--fs-small);color:var(--muted)}
