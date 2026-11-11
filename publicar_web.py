@@ -36,7 +36,10 @@ def main():
     base_noti = os.path.join(AQUI, "..", "noticiasdiarias")
     paraf = os.path.join(base_noti, "parafrasear_notas.py")
     if os.path.isfile(paraf):
-        rc, out = run([sys.executable, "-X", "utf8", paraf,
+        py = os.path.join(os.path.dirname(sys.executable), "python.exe")
+        if not os.path.isfile(py):
+            py = sys.executable
+        rc, out = run([py, "-X", "utf8", paraf,
                        "--solo-subidos", "--limite", "8"])
         log("parafrasis: " + (out.splitlines()[-1] if out else "sin salida")[:300])
 
