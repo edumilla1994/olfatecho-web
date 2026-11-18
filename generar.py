@@ -199,6 +199,7 @@ def cargar_ediciones():
                 "link": (n.get("link") or "").strip(),
                 "contexto": resumen(n.get("contexto"), n.get("title")),
                 "cuerpo": (n.get("cuerpo") or "").strip(),
+                "analisis": (n.get("analisis") or "").strip(),
                 "genero": (n.get("genero") or "Actualidad").strip(),
                 "ambito": (n.get("ambito") or "Perú").strip(),
                 "published": (n.get("published") or "").strip(),
@@ -396,6 +397,7 @@ def cabecera(root):
   <a href="{root}index.html">Inicio</a>
   <a href="{root}index.html#ediciones">Ediciones</a>
   <a href="{root}resumen-diario.html">Resumen diario</a>
+  <a href="{root}categoria/index.html">Categorías</a>
   <a href="{root}nosotros.html">Nosotros</a>
   <a href="{root}apoyanos.html">Apóyanos</a>
   <a href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">YouTube</a>
@@ -742,6 +744,9 @@ def generar_noticia(ed, s, eds):
                       "</div>") if parrafos else ""
     else:
         body_block = ('<div class="body"><p>%s</p></div>' % esc(cuerpo)) if cuerpo else ""
+    analisis_txt = (s.get("analisis") or "").strip()
+    analisis_box = ('<div class="why-box"><span class="why-label">Por qué importa</span>'
+                    '<p>%s</p></div>' % esc(analisis_txt)) if analisis_txt else ""
 
     canonical = "%s/noticia/%s.html" % (BASE_URL, s["slug"])
     share = """<div class="share">
@@ -773,6 +778,7 @@ def generar_noticia(ed, s, eds):
 {share}
 {ad_top}
 {body_block}
+{analisis_box}
 {fuente_box}
 {video}
 {ad_bottom}
@@ -782,11 +788,195 @@ def generar_noticia(ed, s, eds):
         genero=esc(s["genero"]), titulo=esc(s["title"]), fuente=esc(s["source"]),
         fecha=esc(fecha_larga(ed["dt"])), ambito=esc(s["ambito"]),
         resumen=esc(lede), share=share, body_block=body_block,
+        analisis_box=analisis_box,
         fuente_box=fuente, video=video, mas=mas,
         ad_top=ad_slot("story_top"),
         ad_bottom=ad_slot("story_bottom"))
     doc += pie(root)
     return doc
+
+
+CATEGORIAS = [
+    ("politica", "Política",
+     "El Congreso, el Gobierno, las elecciones, los partidos y las decisiones "
+     "que cambian el país. Reunimos lo más importante del día y lo explicamos "
+     "con contexto para entenderlo sin ruido."),
+    ("economia", "Economía",
+     "Precios, empleo, empresas, inversiones y la economía peruana con datos. "
+     "Lo que afecta a tu bolsillo y al país, en lenguaje claro."),
+    ("seguridad", "Seguridad",
+     "Delincuencia, extorsión, minería ilegal, cárceles y el trabajo de la "
+     "policía y la justicia. Los hechos, las cifras y las respuestas del Estado."),
+    ("regiones", "Regiones",
+     "Lo que pasa fuera de Lima: gobiernos regionales, municipalidades, "
+     "sequías, lluvias, obras y la vida en los departamentos del Perú."),
+    ("mundo", "Mundo",
+     "Las noticias internacionales que importan para el Perú: América Latina, "
+     "Estados Unidos, Europa y el resto del mundo."),
+    ("salud", "Salud",
+     "Hospitales, EsSalud, campañas de vacunación, enfermedades y todo lo que "
+     "afecta la salud de las personas en el Perú."),
+    ("sociedad", "Sociedad",
+     "Historias de personas, cultura, educación y la vida cotidiana del país, "
+     "contadas con respeto y sin sensacionalismo."),
+    ("gastronomia", "Gastronomía",
+     "La cocina peruana en el mundo, restaurantes, chefs y todo lo que pone "
+     "al Perú en la mesa internacional."),
+    ("sucesos", "Sucesos",
+     "Accidentes, emergencias y hechos policiales reportados por los medios "
+     "locales, con los datos verificados."),
+]
+
+
+def generar_categoria(nombre, slug, intro, historias):
+    root = "../"
+    hist = sorted(historias, key=lambda x: x[0]["dt"], reverse=True)[:30]
+    filas = ""
+    for ed, s in hist:
+        filas += """<article class="story-card">
+<div class="genre">{genero}</div>
+<h2><a href="{root}noticia/{slug}.html">{titulo}</a></h2>
+<p>{resumen}</p>
+<div class="story-links"><a href="{root}noticia/{slug}.html">Leer la noticia →</a>
+<span class="meta">{fecha} · {edicion}</span></div>
+</article>""".format(genero=esc(s["genero"]), root=root, slug=s["slug"],
+                    titulo=esc(s["title"]),
+                    resumen=esc(s["contexto"] or s["title"]),
+                    fecha=esc(fecha_corta(ed["dt"])),
+                    edicion=esc(ed["edicion"].capitalize()))
+    if not filas:
+        filas = "<p>Todavía no hay noticias en esta sección.</p>"
+    doc = head("%s — Olfatecho" % nombre,
+               intro[:160],
+               "%s/categoria/%s.html" % (BASE_URL, slug), root)
+    doc += cabecera(root)
+    doc += """<main class="wrap"><div class="page">
+<div class="breadcrumb"><a href="{root}index.html">Inicio</a> / <a href="{root}categoria/index.html">Categorías</a></div>
+<h1>{nombre}</h1>
+<p class="intro">{intro}</p>
+<div class="story-list">{filas}</div>
+<p style="margin-top:30px"><a class="btn btn-ghost" href="{root}categoria/index.html">← Todas las categorías</a></p>
+</div></main>""".format(root=root, nombre=esc(nombre), intro=esc(intro),
+                       filas=filas)
+    doc += pie(root)
+    return doc
+
+
+def generar_categoria_index(por_cat):
+    root = ""
+    cards = ""
+    for slug, nombre, intro in CATEGORIAS:
+        n = len(por_cat.get(nombre, []))
+        cards += """<a class="cat-card" href="{root}categoria/{slug}.html">
+<h2>{nombre}</h2><p>{intro}</p><span class="meta">{n} noticias</span></a>""".format(
+            root=root, slug=slug, nombre=esc(nombre), intro=esc(intro), n=n)
+    doc = head("Categorías — Olfatecho",
+               "Todas las secciones de Olfatecho: política, economía, "
+               "seguridad, regiones, mundo, salud, sociedad, gastronomía y sucesos.",
+               BASE_URL + "/categoria/index.html", root)
+    doc += cabecera(root)
+    doc += """<main class="wrap"><div class="page">
+<div class="breadcrumb"><a href="{root}index.html">Inicio</a> / Categorías</div>
+<h1>Categorías</h1>
+<p class="intro">Elige la sección que te interese. Cada noticia incluye el
+resumen, el análisis de por qué importa y el enlace al medio original.</p>
+<div class="cat-grid">{cards}</div>
+</div></main>""".format(root=root, cards=cards)
+    doc += pie(root)
+    return doc
+
+
+def metodologia():
+    return """<h1>Cómo trabajamos</h1>
+<p class="intro">Olfatecho Noticias es un proyecto peruano de información
+rápida y verificada. Esto es exactamente cómo hacemos cada edición.</p>
+<h2>1. Seleccionamos</h2>
+<p>Revisamos los medios peruanos y las fuentes oficiales durante todo el día.
+Elegimos las noticias que explican qué pasó, por qué importa y qué puede
+pasar después. No copiamos notas: resumimos y enlazamos a la fuente original
+para que puedas leerla completa.</p>
+<h2>2. Verificamos</h2>
+<p>Cada dato, cifra, nombre y fecha se comprueba con la fuente original o con
+una segunda fuente. Si algo no está confirmado, se dice que está por
+confirmarse. No publicamos rumores.</p>
+<h2>3. Escribimos y narramos</h2>
+<p>El texto de cada noticia es nuestro: está parafraseado y explicado con
+contexto. El video se produce con voz, imágenes de la noticia y subtítulos.
+También incluimos un análisis breve de por qué importa cada noticia.</p>
+<h2>4. Publicamos y corregimos</h2>
+<p>Las ediciones se publican durante el día y el resumen completo cada
+tarde. Si detectamos un error, lo corregimos en el video, en la web y
+lo señalamos.</p>
+<h2>5. Independencia</h2>
+<p>Olfatecho no pertenece a ningún partido, empresa o medio. El proyecto se
+financia con la publicidad y el apoyo de sus lectores (Yape y BIM).</p>
+<p><strong>Transparencia:</strong> los videos y textos de Olfatecho se
+generan con herramientas de inteligencia artificial supervisadas por el
+equipo editorial. La responsabilidad del contenido es de Olfatecho.</p>
+<p style="margin-top:26px"><a class="btn" href="apoyanos.html">Apóyanos →</a></p>"""
+
+
+def fuentes():
+    return """<h1>Fuentes y verificación</h1>
+<p class="intro">Trabajamos con información pública y con los medios de
+comunicación del Perú. Estas son las fuentes que más usamos y cómo las
+utilizamos.</p>
+<h2>Medios de comunicación</h2>
+<p>El Comercio, Gestión, RPP, La República, Correo, Andina, Infobae, Trome,
+Ojo, Exitosa, Radio Programas, América TV, Canal N, TV Perú, Latina,
+Panamericana, entre otros. Siempre enlazamos la nota original para que
+puedas leerla completa.</p>
+<h2>Fuentes oficiales</h2>
+<p>Instituto Nacional de Estadística e Informática (INEI), Banco Central de
+Reserva (BCRP), Ministerio de Economía y Finanzas (MEF), Presidencia del
+Consejo de Ministros (PCM), Congreso de la República, Jurado Nacional de
+Elecciones (JNE), Oficina Nacional de Procesos Electorales (ONPE), Reniec,
+Poder Judicial, Ministerio Público, Policía Nacional del Perú, Ministerio del
+Interior, Ministerio de Defensa, Ministerio de Salud, EsSalud, Senamhi,
+Defensoría del Pueblo, gobiernos regionales y municipalidades.</p>
+<h2>Cómo verificamos</h2>
+<p>1) Confirmamos el dato en la fuente original. 2) Si es posible, lo
+contrastamos con una segunda fuente. 3) Separamos los hechos de las opiniones.
+4) Si algo no está claro, lo señalamos en el texto.</p>
+<h2>Correcciones</h2>
+<p>Si encuentras un error, escríbenos. Corregimos el texto en la web y, si el
+error está en un video, lo corregimos en la descripción y en la web.</p>
+<p style="margin-top:26px"><a class="btn" href="metodologia.html">Cómo trabajamos →</a></p>"""
+
+
+def glosario():
+    return """<h1>Glosario</h1>
+<p class="intro">Estos son los términos que más se repiten en las noticias
+peruanas, explicados de forma sencilla.</p>
+<h2>Economía y finanzas</h2>
+<p><strong>BCRP:</strong> Banco Central de Reserva del Perú; cuida la moneda
+y la estabilidad de precios. <strong>MEF:</strong> Ministerio de Economía y
+Finanzas; administra el presupuesto del país. <strong>PBI:</strong> Producto
+Interno Bruto; mide todo lo que produce la economía. <strong>Inflación:</strong>
+el aumento general de precios. <strong>S/.:</strong> el sol, la moneda peruana.</p>
+<h2>Política e instituciones</h2>
+<p><strong>Congreso:</strong> el Poder Legislativo; hace las leyes.
+<strong>JNE:</strong> Jurado Nacional de Elecciones; organiza y fiscaliza las
+elecciones. <strong>ONPE:</strong> Oficina Nacional de Procesos Electorales;
+ejecuta los procesos electorales. <strong>PCM:</strong> Presidencia del Consejo
+de Ministros; coordina el trabajo del gobierno. <strong>GORE:</strong> gobierno
+regional. <strong>TC:</strong> Tribunal Constitucional.</p>
+<h2>Seguridad y justicia</h2>
+<p><strong>Extorsión:</strong> exigir dinero bajo amenazas. <strong>Sicariato:</strong>
+asesinatos pagados. <strong>Minería ilegal:</strong> extracción de minerales
+sin autorización. <strong>INPE:</strong> Instituto Nacional Penitenciario;
+administra los penales. <strong>Ministerio Público:</strong> la fiscalía;
+investiga y acusa. <strong>Poder Judicial:</strong> los jueces.</p>
+<h2>Clima y ambiente</h2>
+<p><strong>El Niño:</strong> fenómeno climático que calienta el mar y cambia
+las lluvias. <strong>Senamhi:</strong> Servicio Nacional de Meteorología e
+Hidrología. <strong>Coastal El Niño:</strong> variante costera del fenómeno.
+<strong>Sequía:</strong> falta prolongada de lluvias.</p>
+<h2>Sociedad</h2>
+<p><strong>EsSalud:</strong> seguro social de salud. <strong>Reniec:</strong>
+registro de identidad y estado civil. <strong>Fieles:</strong> personas que
+participan de una celebración religiosa.</p>
+<p style="margin-top:26px"><a class="btn" href="index.html">Volver al inicio →</a></p>"""
 
 
 def generar_pagina(titulo, desc, slug, contenido):
@@ -849,11 +1039,22 @@ def privacidad():
 def sitemap(eds, resumenes=None):
     urls = [BASE_URL + "/", BASE_URL + "/nosotros.html",
             BASE_URL + "/apoyanos.html", BASE_URL + "/privacidad.html",
-            BASE_URL + "/resumen-diario.html"]
+            BASE_URL + "/resumen-diario.html", BASE_URL + "/metodologia.html",
+            BASE_URL + "/fuentes.html", BASE_URL + "/glosario.html",
+            BASE_URL + "/categoria/index.html"]
+    for slug, _n, _i in CATEGORIAS:
+        urls.append("%s/categoria/%s.html" % (BASE_URL, slug))
+    vistos = set(urls)
     for e in eds:
-        urls.append("%s/edicion/%s.html" % (BASE_URL, e["slug"]))
+        u = "%s/edicion/%s.html" % (BASE_URL, e["slug"])
+        if u not in vistos:
+            vistos.add(u)
+            urls.append(u)
         for s in e["stories"]:
-            urls.append("%s/noticia/%s.html" % (BASE_URL, s["slug"]))
+            u = "%s/noticia/%s.html" % (BASE_URL, s["slug"])
+            if u not in vistos:
+                vistos.add(u)
+                urls.append(u)
     body = "".join("<url><loc>%s</loc></url>" % esc(u) for u in urls)
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>' % body
 
@@ -913,11 +1114,25 @@ def main():
             if preparar_imagen(ed["img_src"], dst):
                 ed["img"] = "assets/ediciones/%s.jpg" % ed["slug"]
 
+    # deduplicar: una noticia repetida = una sola pagina
+    vistos = {}
+    for ed in eds:
+        for s in ed["stories"]:
+            k = re.sub(r"\s+", " ", s["title"].lower()).strip()
+            if k in vistos:
+                s["slug"] = vistos[k]
+            else:
+                vistos[k] = s["slug"]
+
     open(os.path.join(SALIDA, "index.html"), "w", encoding="utf-8").write(generar_inicio(eds, resumenes))
+    escritas = set()
     for ed in eds:
         open(os.path.join(SALIDA, "edicion", ed["slug"] + ".html"), "w",
              encoding="utf-8").write(generar_edicion(ed, eds))
         for s in ed["stories"]:
+            if s["slug"] in escritas:
+                continue
+            escritas.add(s["slug"])
             open(os.path.join(SALIDA, "noticia", s["slug"] + ".html"), "w",
                  encoding="utf-8").write(generar_noticia(ed, s, eds))
 
@@ -931,6 +1146,29 @@ def main():
                        "privacidad", privacidad()))
     open(os.path.join(SALIDA, "resumen-diario.html"), "w",
          encoding="utf-8").write(generar_resumen_diario(resumenes))
+    open(os.path.join(SALIDA, "metodologia.html"), "w", encoding="utf-8").write(
+        generar_pagina("Cómo trabajamos",
+                       "Cómo seleccionamos, verificamos y producimos las noticias de Olfatecho.",
+                       "metodologia", metodologia()))
+    open(os.path.join(SALIDA, "fuentes.html"), "w", encoding="utf-8").write(
+        generar_pagina("Fuentes y verificación",
+                       "Los medios y organismos oficiales que usamos y cómo verificamos la información.",
+                       "fuentes", fuentes()))
+    open(os.path.join(SALIDA, "glosario.html"), "w", encoding="utf-8").write(
+        generar_pagina("Glosario",
+                       "Significado de los términos que más se repiten en las noticias peruanas.",
+                       "glosario", glosario()))
+    por_cat = {}
+    for ed in eds:
+        for s in ed["stories"]:
+            por_cat.setdefault(s["genero"], []).append((ed, s))
+    os.makedirs(os.path.join(SALIDA, "categoria"), exist_ok=True)
+    for slug, nombre, intro in CATEGORIAS:
+        open(os.path.join(SALIDA, "categoria", slug + ".html"), "w",
+             encoding="utf-8").write(generar_categoria(nombre, slug, intro,
+                                                       por_cat.get(nombre, [])))
+    open(os.path.join(SALIDA, "categoria", "index.html"), "w",
+         encoding="utf-8").write(generar_categoria_index(por_cat))
     open(os.path.join(SALIDA, "sitemap.xml"), "w", encoding="utf-8").write(sitemap(eds, resumenes))
     open(os.path.join(SALIDA, "rss.xml"), "w", encoding="utf-8").write(rss(eds))
     open(os.path.join(SALIDA, "robots.txt"), "w", encoding="utf-8").write(
