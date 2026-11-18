@@ -220,3 +220,6 @@ body.cookie-lock{overflow:hidden}
 .page .story-links{display:flex;gap:14px;flex-wrap:wrap;font-size:var(--fs-small);align-items:center}
 .page .story-links a{font-weight:700;color:var(--terra)}
 @media (max-width:720px){.cat-grid{grid-template-columns:1fr}}
+
+.why-mini{font-size:var(--fs-small);color:var(--terra);margin:0 0 10px;line-height:1.6}
+.why-mini strong{color:var(--ink)}

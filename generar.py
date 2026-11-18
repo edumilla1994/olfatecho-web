@@ -650,16 +650,21 @@ def generar_edicion(ed, eds):
     next_ed = eds[idx - 1] if idx > 0 else None
     stories = ""
     for i, s in enumerate(ed["stories"]):
+        _an = (s.get("analisis") or "").strip()
+        _an_html = ('<p class="why-mini"><strong>Por qu? importa:</strong> %s</p>'
+                    % esc(_an)) if _an else ""
         stories += """<article class="story-card reveal" style="--d:{d}s">
 <div class="genre">{genero}</div>
 <h2><a href="{root}noticia/{slug}.html">{titulo}</a></h2>
 <p>{resumen}</p>
+{an_html}
 <div class="story-links">
   <a href="{root}noticia/{slug}.html">Leer el resumen →</a>
   {fuente_link}
 </div></article>""".format(
             d=(i % 3) * 0.08, genero=esc(s["genero"]), root=root, slug=s["slug"],
             titulo=esc(s["title"]), resumen=esc(s["contexto"] or s["title"]),
+            an_html=_an_html,
             fuente_link=('<a href="%s" target="_blank" rel="noopener nofollow">'
                          'Nota completa en %s ↗</a>' % (esc(s["link"]), esc(s["source"])))
             if s["link"] else "")
