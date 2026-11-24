@@ -1097,6 +1097,10 @@ def main():
 
     eds = cargar_ediciones()
     resumenes = cargar_resumenes()
+    # Blindaje: nunca se borra el sitio publicado si no hay ediciones fuente
+    if not eds:
+        print("No hay ediciones recientes en FUENTE; docs/ queda intacto.")
+        return 0
     if os.path.isdir(SALIDA):
         shutil.rmtree(SALIDA)
     for sub in ("edicion", "noticia", "assets"):
