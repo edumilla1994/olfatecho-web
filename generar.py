@@ -24,8 +24,7 @@ import unicodedata
 from datetime import datetime, timedelta
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-FUENTE = os.path.normpath(os.path.join(
-    AQUI, "..", "noticiasdiarias", "storage", "noticias_diarias"))
+FUENTE = os.path.join(AQUI, "noticias")  # fuentes versionadas dentro del repo
 SALIDA = os.path.join(AQUI, "docs")
 RESUMEN_DIR = os.path.normpath(os.path.join(
     AQUI, "..", "noticiasdiarias", "storage", "horizontal"))
