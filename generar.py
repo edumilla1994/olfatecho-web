@@ -398,6 +398,8 @@ def cabecera(root):
   <a href="{root}resumen-diario.html">Resumen diario</a>
   <a href="{root}categoria/index.html">Categorías</a>
   <a href="{root}nosotros.html">Nosotros</a>
+  <a href="{root}metodologia.html">Cómo trabajamos</a>
+  <a href="{root}contacto.html">Contacto</a>
   <a href="{root}apoyanos.html">Apóyanos</a>
   <a href="https://youtube.com/@Olfatecho" target="_blank" rel="noopener">YouTube</a>
   <a href="{root}privacidad.html">Privacidad</a>
@@ -425,12 +427,16 @@ def pie(root):
     <p><a href="{root}index.html">Inicio</a></p>
     <p><a href="{root}index.html#ediciones">Ediciones</a></p>
     <p><a href="{root}nosotros.html">Nosotros</a></p>
+    <p><a href="{root}metodologia.html">Cómo trabajamos</a></p>
+    <p><a href="{root}politica-editorial.html">Política editorial</a></p>
     <p><a href="{root}apoyanos.html">Apóyanos</a></p>
     <p><a href="{root}privacidad.html">Privacidad</a></p>
+    <p><a href="{root}terminos.html">Términos</a></p>
     <p><a href="#" data-cookie-settings>Cookies</a></p>
   </div>
   <div>
     <h4>Contacto</h4>
+    <p><a href="{root}contacto.html">Escríbenos</a></p>
     <p><a href="mailto:{email}">{email}</a></p>
     <p>YouTube: <a href="https://youtube.com/@Olfatecho" rel="noopener">@Olfatecho</a></p>
   </div>
@@ -751,6 +757,20 @@ def generar_noticia(ed, s, eds):
     analisis_txt = (s.get("analisis") or "").strip()
     analisis_box = ('<div class="why-box"><span class="why-label">Por qué importa</span>'
                     '<p>%s</p></div>' % esc(analisis_txt)) if analisis_txt else ""
+    que_sigue_txt = (s.get("que_sigue") or "").strip()
+    que_sigue_box = ('<div class="why-box"><span class="why-label">Qué sigue</span>'
+                     '<p>%s</p></div>' % esc(que_sigue_txt)) if que_sigue_txt else ""
+    etiquetas = s.get("etiquetas") or []
+    tags_html = ""
+    if etiquetas:
+        tags_html = '<div class="tags">' + "".join(
+            '<span>%s</span>' % esc(str(t)) for t in etiquetas[:8]) + "</div>"
+    sobre_nota = """<div class="sobre-nota">
+<strong>Sobre esta nota</strong>
+<p>Texto producido por Olfatecho Noticias con revisión editorial. Se contrastó
+con la fuente original enlazada arriba. Si encuentras un error, escríbenos a
+<a href="mailto:%s">%s</a>.</p>
+</div>""" % (EMAIL, EMAIL)
 
     canonical = "%s/noticia/%s.html" % (BASE_URL, s["slug"])
     share = """<div class="share">
@@ -777,22 +797,26 @@ def generar_noticia(ed, s, eds):
 <div class="breadcrumb"><a href="{root}index.html">Inicio</a> / <a href="{root}edicion/{eslug}.html">{edicion}</a></div>
 <span class="genre" style="color:var(--terra);font-size:var(--fs-small);font-weight:700">{genero}</span>
 <h1>{titulo}</h1>
-<div class="meta"><span>{fuente}</span><span>·</span><span>{fecha}</span><span>·</span><span>{ambito}</span></div>
+<div class="meta"><span>Por <strong>Eduardo Milla</strong></span><span>·</span><span>{fuente}</span><span>·</span><span>{fecha}</span><span>·</span><span>{ambito}</span></div>
 <p class="lede">{resumen}</p>
 {share}
 {ad_top}
 {body_block}
 {analisis_box}
+{que_sigue_box}
+{tags_html}
 {fuente_box}
 {video}
 {ad_bottom}
+{sobre_nota}
 <div class="more"><h3>Más de esta edición</h3>{mas}</div>
 </article></main>""".format(
         root=root, eslug=ed["slug"], edicion=esc(ed["edicion"].capitalize()),
         genero=esc(s["genero"]), titulo=esc(s["title"]), fuente=esc(s["source"]),
         fecha=esc(fecha_larga(ed["dt"])), ambito=esc(s["ambito"]),
         resumen=esc(lede), share=share, body_block=body_block,
-        analisis_box=analisis_box,
+        analisis_box=analisis_box, que_sigue_box=que_sigue_box,
+        tags_html=tags_html, sobre_nota=sobre_nota,
         fuente_box=fuente, video=video, mas=mas,
         ad_top=ad_slot("story_top"),
         ad_bottom=ad_slot("story_bottom"))
@@ -893,43 +917,63 @@ resumen, el análisis de por qué importa y el enlace al medio original.</p>
 def metodologia():
     return """<h1>Cómo trabajamos</h1>
 <p class="intro">Olfatecho Noticias es un proyecto peruano de información
-rápida y verificada. Esto es exactamente cómo hacemos cada edición.</p>
-<h2>1. Seleccionamos</h2>
-<p>Revisamos los medios peruanos y las fuentes oficiales durante todo el día.
-Elegimos las noticias que explican qué pasó, por qué importa y qué puede
-pasar después. No copiamos notas: resumimos y enlazamos a la fuente original
-para que puedas leerla completa.</p>
-<h2>2. Verificamos</h2>
-<p>Cada dato, cifra, nombre y fecha se comprueba con la fuente original o con
-una segunda fuente. Si algo no está confirmado, se dice que está por
-confirmarse. No publicamos rumores.</p>
-<h2>3. Escribimos y narramos</h2>
-<p>El texto de cada noticia es nuestro: está parafraseado y explicado con
-contexto. El video se produce con voz, imágenes de la noticia y subtítulos.
-También incluimos un análisis breve de por qué importa cada noticia.</p>
-<h2>4. Publicamos y corregimos</h2>
-<p>Las ediciones se publican durante el día y el resumen completo cada
-tarde. Si detectamos un error, lo corregimos en el video, en la web y
-lo señalamos.</p>
-<h2>5. Independencia</h2>
-<p>Olfatecho no pertenece a ningún partido, empresa o medio. El proyecto se
-financia con la publicidad y el apoyo de sus lectores (Yape y BIM).</p>
-<p><strong>Transparencia:</strong> los videos y textos de Olfatecho se
-generan con herramientas de inteligencia artificial supervisadas por el
-equipo editorial. La responsabilidad del contenido es de Olfatecho.</p>
-<p style="margin-top:26px"><a class="btn" href="apoyanos.html">Apóyanos →</a></p>"""
+rápida, verificada y transparente. Este es el proceso completo que sigue cada
+edición, desde la selección de temas hasta la corrección de errores.</p>
+<h2>1. Selección de temas</h2>
+<p>Revisamos cada día medios peruanos, agencias internacionales y fuentes
+oficiales. Priorizamos las noticias que tienen impacto directo en el Perú:
+política, economía, salud, regiones, seguridad y servicios públicos. Evitamos
+el sensacionalismo, los rumores y los contenidos que no aportan información
+útil.</p>
+<p>No publicamos todo lo que encontramos. Una edición puede cubrir cinco o seis
+temas; el resto se descarta si no está suficientemente confirmado o si no
+aportan contexto nuevo.</p>
+<h2>2. Verificación</h2>
+<p>Antes de escribir, comprobamos nombres, cargos, cifras, fechas y lugares en
+la fuente original. Cuando es posible, contrastamos con una segunda fuente o
+con un documento oficial. Si un dato no está claro, lo señalamos en el texto;
+si no se puede confirmar, no se publica.</p>
+<p>Distinguimos siempre entre hechos, versiones de las partes y opiniones. Las
+citas se atribuyen a quien las dijo y no se presentan como conclusiones del
+medio.</p>
+<h2>3. Redacción y contexto</h2>
+<p>El texto se escribe desde cero: no copiamos párrafos de otros medios. Cada
+artículo explica qué pasó, por qué importa y qué puede venir después. El
+enlace a la fuente original queda visible para que el lector pueda verificar
+y ampliar la información.</p>
+<h2>4. Producción del video</h2>
+<p>La edición en video se construye con el mismo material verificado. La voz,
+los subtítulos y las imágenes se revisan antes de subir el video. Las imágenes
+provienen de los artículos originales o de fuentes públicas, no se generan
+con inteligencia artificial.</p>
+<h2>5. Uso de inteligencia artificial</h2>
+<p>Usamos IA como apoyo para transcribir audio, ordenar información y agilizar
+borradores. No sustituye la verificación ni la decisión editorial. Todo texto
+y video se revisa antes de publicarse. Cuando una herramienta de IA comete un
+error, la responsabilidad sigue siendo del medio.</p>
+<h2>6. Correcciones y actualizaciones</h2>
+<p>Si encontramos un error, corregimos el artículo y dejamos constancia de la
+corrección. Si el error afecta un video, actualizamos la descripción y el
+artículo relacionado. Cualquier persona puede pedir una corrección escribiendo
+a <a href="mailto:%s">%s</a>.</p>
+<h2>7. Independencia y publicidad</h2>
+<p>Olfatecho no pertenece a partidos, empresas ni grupos de medios. La
+publicidad y los aportes de lectores financian el proyecto, pero no influyen en
+la selección ni en el contenido. Los contenidos pagados, si existen, se
+identifican de forma clara.</p>
+<p style="margin-top:26px"><a class="btn" href="politica-editorial.html">Leer la política editorial completa →</a></p>""" % (EMAIL, EMAIL)
 
 
 def fuentes():
     return """<h1>Fuentes y verificación</h1>
-<p class="intro">Trabajamos con información pública y con los medios de
-comunicación del Perú. Estas son las fuentes que más usamos y cómo las
-utilizamos.</p>
+<p class="intro">Trabajamos con información pública, documentos oficiales y
+medios de comunicación del Perú y del mundo. Estas son las fuentes que más
+usamos, cómo las citamos y cómo puedes verificar lo que publicamos.</p>
 <h2>Medios de comunicación</h2>
-<p>El Comercio, Gestión, RPP, La República, Correo, Andina, Infobae, Trome,
-Ojo, Exitosa, Radio Programas, América TV, Canal N, TV Perú, Latina,
-Panamericana, entre otros. Siempre enlazamos la nota original para que
-puedas leerla completa.</p>
+<p>Entre otros: El Comercio, Gestión, RPP Noticias, La República, Perú 21,
+Correo, Andina, Infobae, Trome, Ojo, Exitosa, América TV, Canal N, TV Perú,
+Latina, Panamericana, Reuters, AP y BBC Mundo. Siempre enlazamos la nota
+original para que puedas leerla completa.</p>
 <h2>Fuentes oficiales</h2>
 <p>Instituto Nacional de Estadística e Informática (INEI), Banco Central de
 Reserva (BCRP), Ministerio de Economía y Finanzas (MEF), Presidencia del
@@ -939,13 +983,28 @@ Poder Judicial, Ministerio Público, Policía Nacional del Perú, Ministerio del
 Interior, Ministerio de Defensa, Ministerio de Salud, EsSalud, Senamhi,
 Defensoría del Pueblo, gobiernos regionales y municipalidades.</p>
 <h2>Cómo verificamos</h2>
-<p>1) Confirmamos el dato en la fuente original. 2) Si es posible, lo
-contrastamos con una segunda fuente. 3) Separamos los hechos de las opiniones.
-4) Si algo no está claro, lo señalamos en el texto.</p>
+<ol>
+<li>Confirmamos el dato principal en la fuente original.</li>
+<li>Buscamos una segunda fuente independiente cuando el dato es sensible.</li>
+<li>Revisamos documentos oficiales si el tema lo permite.</li>
+<li>Separamos hechos, versiones y opiniones.</li>
+<li>Si algo no está confirmado, lo decimos o no lo publicamos.</li>
+</ol>
+<h2>Qué significa “fuente original”</h2>
+<p>Es el artículo, comunicado o documento donde apareció primero la
+información. En cada nota incluimos un enlace directo. Si la fuente original
+cambia o elimina el contenido, lo señalamos cuando es relevante.</p>
+<h2>Fotos y videos</h2>
+<p>Las imágenes se toman de los artículos citados o de fuentes públicas. No
+generamos imágenes con inteligencia artificial para ilustrar noticias. Cuando
+una imagen es referencial, se indica en el texto o en el pie.</p>
 <h2>Correcciones</h2>
-<p>Si encuentras un error, escríbenos. Corregimos el texto en la web y, si el
-error está en un video, lo corregimos en la descripción y en la web.</p>
-<p style="margin-top:26px"><a class="btn" href="metodologia.html">Cómo trabajamos →</a></p>"""
+<p>Si encuentras un error, escríbenos a <a href="mailto:%s">%s</a> con el
+enlace de la nota y el dato que crees incorrecto. Corregimos el texto en la web
+y, si el error está en un video, actualizamos la descripción y el artículo
+relacionado.</p>
+<p>Más detalles en la <a href="politica-editorial.html">política editorial</a>
+y en <a href="metodologia.html">cómo trabajamos</a>.</p>""" % (EMAIL, EMAIL)
 
 
 def glosario():
@@ -993,18 +1052,48 @@ def generar_pagina(titulo, desc, slug, contenido):
 
 
 def nosotros():
-    return """<h1>¿Qué es Olfatecho?</h1>
-<p>Olfatecho es un noticiero peruano que resume las noticias más importantes del día en ediciones de menos de dos minutos. Cada historia tiene su espacio en esta web con un resumen claro y el enlace directo al medio que la publicó.</p>
-<p>Lo hace <strong>Eduardo Milla</strong>, con la idea de que enterarse de las noticias no tiene que tomar media hora.</p>
-<h2>Nuestro compromiso</h2>
-<p>No inventamos ni copiamos artículos: contamos lo esencial y te llevamos a la fuente original para que puedas leer la nota completa y sacar tus conclusiones.</p>
-<h2>¿Cómo funciona?</h2>
+    return """<h1>Quiénes somos</h1>
+<p class="intro">Olfatecho Noticias es un medio digital peruano e independiente.
+Publicamos un resumen diario de las noticias que más afectan la vida de las
+personas en el Perú y explicamos por qué importan, sin ruido y sin copiar el
+trabajo de otros medios.</p>
+<h2>Qué hacemos</h2>
+<p>Cada día revisamos medios nacionales, internacionales y fuentes oficiales.
+Seleccionamos un grupo pequeño de historias, las contrastamos y las contamos en
+lenguaje claro. Cada nota incluye el enlace a la fuente original para que el
+lector pueda profundizar y formarse su propia opinión.</p>
+<p>Además del texto, producimos una edición en video para YouTube y redes. El
+video y el artículo comparten la misma investigación y el mismo criterio
+editorial: informar rápido, con contexto y sin sensacionalismo.</p>
+<h2>Quién lo hace</h2>
+<p><strong>Eduardo Milla</strong> es el fundador y editor de Olfatecho. Se encarga
+de la selección de temas, la verificación, la redacción final y la publicación.
+Cuando una nota requiere una revisión adicional, se contrasta con una segunda
+fuente antes de salir.</p>
+<h2>Nuestros principios</h2>
 <ul>
-<li>Revisamos medios peruanos e internacionales durante el día.</li>
-<li>Elegimos las historias más relevantes y las narramos en video.</li>
-<li>Publicamos la edición en YouTube y aquí encuentras el resumen y las fuentes.</li>
+<li><strong>Precisión antes que velocidad:</strong> si un dato no está confirmado,
+se dice.</li>
+<li><strong>Transparencia:</strong> enlazamos las fuentes y explicamos nuestro
+proceso.</li>
+<li><strong>Independencia:</strong> no respondemos a partidos, empresas ni
+gobiernos.</li>
+<li><strong>Corrección:</strong> si nos equivocamos, lo corregimos y lo dejamos
+registrado.</li>
 </ul>
-<p>¿Tienes un dato, una corrección o una sugerencia? Escríbenos a <a href="mailto:%s">%s</a>.</p>""" % (EMAIL, EMAIL)
+<h2>Cómo nos financiamos</h2>
+<p>Olfatecho se sostiene con publicidad y con el apoyo voluntario de los
+lectores mediante Yape y BIM. La publicidad no influye en la selección ni en el
+contenido de las noticias. Los espacios pagados, si existen, se identifican como
+tal.</p>
+<h2>Uso de inteligencia artificial</h2>
+<p>Usamos herramientas de inteligencia artificial para transcribir, resumir y
+acelerar la producción. Todo contenido se revisa antes de publicarse y la
+responsabilidad editorial es humana. No publicamos textos generados sin
+verificación ni datos inventados.</p>
+<h2>Contacto</h2>
+<p>Para datos, correcciones, sugerencias o consultas comerciales escribe a
+<a href="mailto:%s">%s</a>. Respondemos en un plazo de 24 a 72 horas hábiles.</p>""" % (EMAIL, EMAIL)
 
 
 def apoyanos():
@@ -1025,19 +1114,171 @@ def apoyanos():
 
 def privacidad():
     return """<h1>Política de privacidad</h1>
-<p>Última actualización: %s.</p>
-<p>Olfatecho Noticias es un sitio informativo. Esta política explica qué datos se usan cuando visitas la web o ves nuestros videos.</p>
+<p><strong>Última actualización:</strong> %s.</p>
+<p>Olfatecho Noticias es un sitio informativo peruano. Esta política explica
+qué datos se recogen cuando visitas la web, ves un video o te comunicas con
+nosotros, y cómo puedes controlarlos.</p>
+<h2>Responsable del sitio</h2>
+<p>Olfatecho Noticias, proyecto editorial de Eduardo Milla. Contacto:
+<a href="mailto:%s">%s</a>.</p>
 <h2>Datos que recopilamos</h2>
-<p>No pedimos registro ni datos personales para leer las noticias. El sitio es estático y no tiene formularios de usuario.</p>
+<p>No pedimos registro ni datos personales para leer las noticias. No vendemos
+ni alquilamos datos personales. Si nos escribes por correo, guardamos el
+mensaje y tu dirección únicamente para responder y, si corresponde, para
+registrar una corrección.</p>
 <h2>Cookies y publicidad</h2>
-<p>Usamos cookies propias y de terceros para mostrar anuncios y medir el tráfico. El proveedor de publicidad es <strong>Google AdSense</strong>, que puede usar cookies para mostrarte anuncios según tus visitas a este y otros sitios. Puedes aceptar o rechazar estas cookies en el aviso que aparece al entrar; si rechazas, no cargamos el script de publicidad.</p>
-<p>Más información: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Cómo usa Google las cookies en publicidad</a>.</p>
-<h2>Videos</h2>
-<p>Los videos se muestran con el reproductor de YouTube (modo privacidad mejorada). YouTube y Google pueden usar cookies propias según sus políticas.</p>
+<p>Usamos cookies propias y de terceros para mostrar publicidad y medir el
+tráfico. El proveedor de publicidad es <strong>Google AdSense</strong>, que
+puede usar cookies para mostrarte anuncios según tus visitas a este y otros
+sitios. Puedes aceptar o rechazar estas cookies en el aviso que aparece al
+entrar; si rechazas, no cargamos el script de publicidad ni la analítica.</p>
+<p>Más información:
+<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">cómo usa Google las cookies en publicidad</a>.</p>
+<h2>Analítica</h2>
+<p>Si aceptas las cookies, podemos medir visitas y páginas vistas de forma
+agregada para entender qué contenidos son útiles. No usamos esos datos para
+identificarte personalmente.</p>
+<h2>Videos de YouTube</h2>
+<p>Los videos se muestran con el reproductor de YouTube en modo de privacidad
+mejorada. YouTube y Google pueden usar cookies propias según sus políticas
+cuando reproduces un video.</p>
 <h2>Enlaces a otros medios</h2>
-<p>Cada noticia enlaza al artículo original de su medio. Al hacer clic saldrás de Olfatecho y se aplicarán las políticas del sitio de destino.</p>
+<p>Cada noticia enlaza al artículo original de su medio. Al hacer clic saldrás
+de Olfatecho y se aplicarán las políticas de privacidad del sitio de destino.</p>
+<h2>Derechos y contacto</h2>
+<p>Puedes pedir información sobre los datos que tengamos asociados a tus
+mensajes, solicitar su eliminación o pedir una corrección escribiendo a
+<a href="mailto:%s">%s</a>. Respondemos en un plazo de 24 a 72 horas hábiles.</p>
+<h2>Cambios en esta política</h2>
+<p>Si cambiamos esta política, actualizaremos la fecha de la parte superior.
+Los cambios importantes se anunciarán en la web.</p>""" % (fecha_larga(datetime.now()), EMAIL, EMAIL, EMAIL, EMAIL)
+
+
+def contacto():
+    return """<h1>Contacto</h1>
+<p class="intro">Escríbenos si tienes un dato, una corrección, una sugerencia o
+una consulta sobre publicidad o privacidad. Leemos todos los mensajes.</p>
+<h2>Correo</h2>
+<p><a href="mailto:%s">%s</a></p>
+<h2>Para qué escribirnos</h2>
+<ul>
+<li><strong>Datos y pistas:</strong> información verificable sobre un tema de
+interés público.</li>
+<li><strong>Correcciones:</strong> incluye el enlace de la nota y el dato que
+consideras incorrecto.</li>
+<li><strong>Derechos de autor:</strong> si eres titular de una imagen o texto y
+detectas un uso inadecuado.</li>
+<li><strong>Publicidad:</strong> consultas comerciales y patrocinios
+identificados.</li>
+<li><strong>Privacidad:</strong> solicitudes sobre tus datos personales.</li>
+</ul>
+<h2>Cómo tratamos los mensajes</h2>
+<p>Respondemos en un plazo de 24 a 72 horas hábiles. Las correcciones se
+revisan primero con la fuente original. No publicamos datos personales sin
+consentimiento ni reenviamos mensajes a terceros sin autorización.</p>
+<h2>Anónimo</h2>
+<p>Si necesitas proteger tu identidad, indícalo en el mensaje. Evaluaremos el
+caso y, si la información es verificable, la contrastaremos por otra vía.</p>
+<h2>Preguntas frecuentes</h2>
+<p><strong>¿Cobran por publicar una noticia?</strong> No. No aceptamos pagos por
+publicar, ocultar o modificar información. La publicidad se vende por espacios y
+está separada del contenido editorial.</p>
+<p><strong>¿Puedo usar sus textos o videos?</strong> Puedes citar fragmentos con
+atribución y enlace. Para reproducir un artículo completo o un video necesitas
+autorización escrita.</p>
+<p><strong>¿Cómo pido una corrección?</strong> Envía el enlace de la nota, el
+dato que consideras incorrecto y, si es posible, la fuente que lo respalda.
+Revisaremos el caso y responderemos.</p>
+<p><strong>¿Responden todos los mensajes?</strong> Leemos todos, pero priorizamos
+datos verificables, correcciones y consultas de privacidad o publicidad. El
+plazo habitual es de 24 a 72 horas hábiles.</p>
+<h2>Redes</h2>
+<p>YouTube: <a href="https://youtube.com/@Olfatecho" rel="noopener">@Olfatecho</a></p>""" % (EMAIL, EMAIL)
+
+
+def politica_editorial():
+    return """<h1>Política editorial</h1>
+<p class="intro">Estas son las reglas que siguen nuestros contenidos. Buscan
+que la información sea precisa, útil y verificable, y que cualquier persona
+pueda entender cómo se tomó cada decisión editorial.</p>
+<h2>1. Independencia</h2>
+<p>Olfatecho Noticias no pertenece a partidos políticos, empresas, gobiernos ni
+grupos de medios. No aceptamos pagos por publicar o silenciar una noticia. La
+publicidad se vende por espacios y no por contenido; si existe contenido
+patrocinado, se identifica como tal.</p>
+<h2>2. Selección y relevancia</h2>
+<p>Priorizamos temas que afectan la vida diaria: economía, salud, seguridad,
+regiones, servicios públicos y decisiones políticas. No publicamos rumores,
+contenido morboso ni noticias sin interés público verificable.</p>
+<h2>3. Fuentes y verificación</h2>
+<p>Usamos fuentes originales y, cuando el tema lo requiere, una segunda fuente
+independiente o un documento oficial. Los hechos se separan de las opiniones.
+Las citas se atribuyen. Si un dato no se puede confirmar, se dice o no se
+publica.</p>
+<h2>4. Inteligencia artificial</h2>
+<p>Usamos IA para transcribir, resumir y ordenar información. No publicamos un
+texto generado sin revisión. La verificación, el enfoque y la decisión final
+son humanos. Cuando la IA se usa para producir un borrador, el contenido se
+contrasta con la fuente antes de salir.</p>
+<h2>5. Correcciones</h2>
+<p>Si nos equivocamos, corregimos el texto y dejamos constancia. Si el error
+afecta un video, actualizamos la descripción y la nota relacionada. Las
+correcciones se pueden pedir a <a href="mailto:%s">%s</a>.</p>
+<h2>6. Actualizaciones</h2>
+<p>Una noticia puede actualizarse si aparecen datos nuevos. Cuando el cambio es
+relevante, se indica la hora de actualización. No borramos una nota para
+ocultar un error: la corregimos y explicamos el cambio.</p>
+<h2>7. Publicidad</h2>
+<p>Los anuncios se muestran mediante Google AdSense y no influyen en la
+selección editorial. No permitimos anuncios engañosos ni contenido que se haga
+pasar por información periodística.</p>
+<h2>8. Quejas y reclamos</h2>
+<p>Si consideras que un contenido es inexacto, discriminatorio o invade tu
+privacidad, escribe a <a href="mailto:%s">%s</a> con el enlace y una
+explicación. Revisaremos el caso y responderemos.</p>""" % (EMAIL, EMAIL, EMAIL, EMAIL)
+
+
+def terminos():
+    return """<h1>Términos de uso</h1>
+<p><strong>Última actualización:</strong> %s.</p>
+<p>Al usar Olfatecho Noticias aceptas estos términos. Si no estás de acuerdo,
+puedes dejar de usar el sitio.</p>
+<h2>Contenido informativo</h2>
+<p>Los contenidos tienen finalidad informativa. Aunque verificamos la
+información, no garantizamos que esté libre de errores ni que cubra todos los
+aspectos de un tema. Las decisiones que tomes a partir de una nota son tu
+responsabilidad.</p>
+<h2>Propiedad intelectual</h2>
+<p>Los textos, videos, gráficos y el diseño de Olfatecho son de sus autores.
+Puedes citar fragmentos con atribución y enlace. No puedes reproducir
+artículos completos ni videos sin autorización. Las imágenes de terceros
+pertenecen a sus titulares y se usan con fines informativos.</p>
+<h2>Enlaces externos</h2>
+<p>Incluimos enlaces a medios y fuentes oficiales. No controlamos esos sitios y
+no somos responsables de su contenido ni de sus políticas.</p>
+<h2>Publicidad</h2>
+<p>El sitio puede mostrar anuncios de Google AdSense. La presencia de un anuncio
+no implica respaldo al producto o servicio anunciado.</p>
+<h2>Conducta</h2>
+<p>No está permitido usar el sitio para actividades ilegales, intentar alterar
+su funcionamiento, extraer contenido de forma masiva o suplantar a otra
+persona.</p>
+<h2>Uso de inteligencia artificial</h2>
+<p>Parte de la producción usa herramientas de IA para transcribir y ordenar
+información. Eso no elimina la revisión humana ni la responsabilidad editorial.
+Si detectas un error atribuible a ese proceso, puedes pedir una corrección.</p>
+<h2>Limitación de responsabilidad</h2>
+<p>El sitio se ofrece “tal como está”. No garantizamos disponibilidad continua,
+ausencia de errores técnicos ni exactitud absoluta de todos los contenidos.
+No somos responsables de daños derivados del uso de la información publicada.</p>
+<h2>Legislación aplicable</h2>
+<p>Estos términos se interpretan conforme a las leyes de la República del Perú.
+Cualquier controversia se resolverá en los tribunales competentes de Lima.</p>
+<h2>Cambios</h2>
+<p>Podemos actualizar estos términos. La versión vigente es la publicada en esta
+página. El uso continuado del sitio implica la aceptación de los cambios.</p>
 <h2>Contacto</h2>
-<p>Para consultas sobre privacidad escribe a <a href="mailto:%s">%s</a>.</p>""" % (fecha_larga(datetime.now()), EMAIL, EMAIL)
+<p>Consultas: <a href="mailto:%s">%s</a>.</p>""" % (fecha_larga(datetime.now()), EMAIL, EMAIL)
 
 
 def sitemap(eds, resumenes=None):
@@ -1045,7 +1286,8 @@ def sitemap(eds, resumenes=None):
             BASE_URL + "/apoyanos.html", BASE_URL + "/privacidad.html",
             BASE_URL + "/resumen-diario.html", BASE_URL + "/metodologia.html",
             BASE_URL + "/fuentes.html", BASE_URL + "/glosario.html",
-            BASE_URL + "/categoria/index.html"]
+            BASE_URL + "/contacto.html", BASE_URL + "/politica-editorial.html",
+            BASE_URL + "/terminos.html", BASE_URL + "/categoria/index.html"]
     for slug, _n, _i in CATEGORIAS:
         urls.append("%s/categoria/%s.html" % (BASE_URL, slug))
     vistos = set(urls)
@@ -1096,8 +1338,9 @@ def main():
 
     eds = cargar_ediciones()
     resumenes = cargar_resumenes()
-    # Blindaje: nunca se borra el sitio publicado si no hay ediciones fuente
-    if not eds:
+    # Blindaje: nunca se borra el sitio publicado si no hay ediciones fuente.
+    # OLFATECHO_ALLOW_EMPTY=1 permite reconstruir un sitio limpio sin noticias.
+    if not eds and os.getenv("OLFATECHO_ALLOW_EMPTY") != "1":
         print("No hay ediciones recientes en FUENTE; docs/ queda intacto.")
         return 0
     if os.path.isdir(SALIDA):
@@ -1166,6 +1409,15 @@ def main():
         generar_pagina("Glosario",
                        "Significado de los términos que más se repiten en las noticias peruanas.",
                        "glosario", glosario()))
+    open(os.path.join(SALIDA, "contacto.html"), "w", encoding="utf-8").write(
+        generar_pagina("Contacto", "Escribe a Olfatecho Noticias: datos, correcciones, publicidad y privacidad.",
+                       "contacto", contacto()))
+    open(os.path.join(SALIDA, "politica-editorial.html"), "w", encoding="utf-8").write(
+        generar_pagina("Política editorial", "Reglas de independencia, verificación, IA, correcciones y publicidad de Olfatecho.",
+                       "politica-editorial", politica_editorial()))
+    open(os.path.join(SALIDA, "terminos.html"), "w", encoding="utf-8").write(
+        generar_pagina("Términos de uso", "Condiciones de uso del sitio Olfatecho Noticias.",
+                       "terminos", terminos()))
     por_cat = {}
     for ed in eds:
         for s in ed["stories"]:
